@@ -12,23 +12,23 @@ namespace MyGameLibrairy
     /// </summary>
     public class Bullets
     {
-        public Texture2D Texture;
-        public SpriteEffects SpriteEffect;
-        public Vector2 Position;
-        public Vector2 Speed;
-        public Vector2 Origin;
-        public Rectangle Rectangle;
-        public bool isVisible;
+        public Texture2D m_Texture;
+        public SpriteEffects m_SpriteEffect;
+        public Vector2 m_Position;
+        public Vector2 m_Speed;
+        public Vector2 m_Origin;
+        public Rectangle m_Rectangle;
+        public bool m_IsVisible;
 
-        public Bullets(Texture2D NewTexture)
+        public Bullets(Texture2D aTexture)
         {
-            Texture = NewTexture;
-            isVisible = false;
+            m_Texture = aTexture;
+            m_IsVisible = false;
         }
 
-        public void Draw(SpriteBatch g)
+        public void Draw(SpriteBatch aSpritebatch)
         {
-            g.Draw(Texture, Position, null, Color.White, 0f, Origin, 1f, SpriteEffect, 0);
+            aSpritebatch.Draw(m_Texture, m_Position, null, Color.White, 0f, m_Origin, 1f, m_SpriteEffect, 0);
         }
     }
 }
