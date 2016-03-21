@@ -386,7 +386,7 @@ namespace Loxi
             {
                 g.GraphicsDevice.Clear(Color.Black);
                 AnimationPlayer.Draw(gametime, g, new Vector2(g.GraphicsDevice.Viewport.Width / 2, g.GraphicsDevice.Viewport.Height), SpriteEffects.None);
-                if (AnimationPlayer.FrameIndex == 3)
+                if (AnimationPlayer.m_FrameIndex == 3)
                 {
                     g.DrawString(RessourcesLoxi.Texte, OpponentName, new Vector2(550, 100), OpponentColor);
                     g.DrawString(RessourcesLoxi.Texte2, "Direction = A,D\n Sauter = Espace\n Tirer = C \n Courir=Shift+Direction", new Vector2(10, 10), OpponentColor);

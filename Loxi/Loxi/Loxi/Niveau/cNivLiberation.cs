@@ -159,7 +159,7 @@ namespace Loxi
                     g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(2000, 0, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
                     g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(2000, 1500, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
                     foreach (ObjCollisionable platform in Platforms) { platform.Draw(g); }
-                    if (Joueur != null && AnimationPlayer.Animation != null)
+                    if (Joueur != null && AnimationPlayer.m_Animation != null)
                     {
                         if (Reussi)
                             g.DrawString(RessourcesLoxi.Texte, "Win                                                      thankyou!!!", new Vector2(Camera.X - 350, Camera.Y - 220), Color.Red);

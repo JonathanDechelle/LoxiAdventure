@@ -62,14 +62,14 @@ namespace Loxi
         public override void Update(GameTime gameTime)
         {
             ///Sors de fausse animation
-            if (AnimationPlayer.FrameIndex == 9 && !SorsDeFaussePart2)
+            if (AnimationPlayer.m_FrameIndex == 9 && !SorsDeFaussePart2)
                 SorsDeFaussePart2 = true;
-            else if (AnimationPlayer.FrameIndex == 9 && SorsDeFaussePart2)
+            else if (AnimationPlayer.m_FrameIndex == 9 && SorsDeFaussePart2)
                 SortieDefausse = true; //Est sortie de fausse
 
             if (SortieDefausse)
             {
-                if (AnimationPlayer.FrameIndex == 18)//si fin d'animation de tranfo
+                if (AnimationPlayer.m_FrameIndex == 18)//si fin d'animation de tranfo
                     TransfoNinjaComplete = true;
                 else
                     AnimationPlayer.PlayAnimation(TransfoNinja);

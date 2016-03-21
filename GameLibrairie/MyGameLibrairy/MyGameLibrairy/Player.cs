@@ -294,7 +294,7 @@ namespace MyGameLibrairy
                         if (ShootUp)
                         {
                             AnimationPlayer.PlayAnimation(ShootUpwardNormal);
-                            if (AnimationPlayer.FrameIndex == 8)
+                            if (AnimationPlayer.m_FrameIndex == 8)
                             {
                                 ShootAnim = false;
                                 ShootUp = false;
@@ -303,7 +303,7 @@ namespace MyGameLibrairy
                         else
                         {
                             AnimationPlayer.PlayAnimation(ShootNormal);
-                            if (AnimationPlayer.FrameIndex == 10)
+                            if (AnimationPlayer.m_FrameIndex == 10)
                                 ShootAnim = false;
                         }
                     }
@@ -318,7 +318,7 @@ namespace MyGameLibrairy
                 if (Transformation)
                 {
                     AnimationPlayer.PlayAnimation(TransfoNormal);
-                    if (AnimationPlayer.FrameIndex == 18)
+                    if (AnimationPlayer.m_FrameIndex == 18)
                         Transformation = false;
                     LoxiTransformation = true;
                 }
@@ -343,7 +343,7 @@ namespace MyGameLibrairy
                             if (ShootUp)
                             {
                                 AnimationPlayer.PlayAnimation(ShootUpwardNormal);
-                                if (AnimationPlayer.FrameIndex == 8)
+                                if (AnimationPlayer.m_FrameIndex == 8)
                                 {
                                     ShootAnim = false;
                                     ShootUp = false;
@@ -352,7 +352,7 @@ namespace MyGameLibrairy
                             else
                             {
                                 AnimationPlayer.PlayAnimation(ShootNormal);
-                                if (AnimationPlayer.FrameIndex == 10)
+                                if (AnimationPlayer.m_FrameIndex == 10)
                                     ShootAnim = false;
                             }
                         }

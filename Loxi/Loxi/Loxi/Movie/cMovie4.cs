@@ -95,7 +95,7 @@ namespace Loxi
                 case State.Combat: if (I == 11)
                     {
                         #region AttackMich
-                        if (APMich.Animation == AllAnimationLoxi.MichAttack2 && APMich.FrameIndex == 3)
+                        if (APMich.m_Animation == AllAnimationLoxi.MichAttack2 && APMich.m_FrameIndex == 3)
                         {
                             APMich.PlayAnimation(AllAnimationLoxi.MichAttente);
                             AttackMich = true;
@@ -115,7 +115,7 @@ namespace Loxi
                             if (PositionRaph.Y <= PositionWario.Y + 80)
                                 APRaph.PlayAnimation(AllAnimationLoxi.RaphAttack2);
 
-                            if (APRaph.Animation == AllAnimationLoxi.RaphAttack2 && APRaph.FrameIndex == 3)
+                            if (APRaph.m_Animation == AllAnimationLoxi.RaphAttack2 && APRaph.m_FrameIndex == 3)
                             {
                                 APRaph.PlayAnimation(AllAnimationLoxi.RaphAttente);
                                 AttackRaph = true;
@@ -140,7 +140,7 @@ namespace Loxi
                             if (PositionDon.Y <= PositionWario.Y + 80)
                                 APDon.PlayAnimation(AllAnimationLoxi.DonAttack2);
 
-                            if (APDon.Animation == AllAnimationLoxi.DonAttack2 && APDon.FrameIndex == 3)
+                            if (APDon.m_Animation == AllAnimationLoxi.DonAttack2 && APDon.m_FrameIndex == 3)
                             {
                                 APDon.PlayAnimation(AllAnimationLoxi.DonAttente);
                                 AttackDon = true;
@@ -165,7 +165,7 @@ namespace Loxi
                             if (PositionDon.Y <= PositionWario.Y + 80)
                                 APLeo.PlayAnimation(AllAnimationLoxi.LeoAttack2);
 
-                            if (APLeo.Animation == AllAnimationLoxi.LeoAttack2 && APLeo.FrameIndex == 3)
+                            if (APLeo.m_Animation == AllAnimationLoxi.LeoAttack2 && APLeo.m_FrameIndex == 3)
                             {
                                 APLeo.PlayAnimation(AllAnimationLoxi.LeoAttente);
                                 AttackLeo = true;
@@ -180,7 +180,7 @@ namespace Loxi
                             if (!SCPart2)
                             {
                                 AllAnimationLoxi.AnimationPlayer.PlayAnimation(AllAnimationLoxi.SuperComboPart1);
-                                if (AllAnimationLoxi.AnimationPlayer.FrameIndex == 3)
+                                if (AllAnimationLoxi.AnimationPlayer.m_FrameIndex == 3)
                                 {
                                     SCPart2 = true;
                                 }
@@ -188,7 +188,7 @@ namespace Loxi
                             else
                             {
                                 AllAnimationLoxi.AnimationPlayer.PlayAnimation(AllAnimationLoxi.SuperComboPart2);
-                                if (AllAnimationLoxi.AnimationPlayer.FrameIndex == 4)
+                                if (AllAnimationLoxi.AnimationPlayer.m_FrameIndex == 4)
                                 {
                                     AttackLoxi = true;
                                 }
@@ -198,11 +198,11 @@ namespace Loxi
                                 AnimationPlayer.PlayAnimation(AllAnimationLoxi.WarioExplose);
                         }
 
-                        if (AnimationPlayer.Animation == AllAnimationLoxi.WarioExplose)
+                        if (AnimationPlayer.m_Animation == AllAnimationLoxi.WarioExplose)
 
-                            if (AnimationPlayer.FrameIndex == 3)
+                            if (AnimationPlayer.m_FrameIndex == 3)
                                 TableParole[I] = "NOOOOOOOOOOOOOOOOO";
-                            else if (AnimationPlayer.FrameIndex == 6)
+                            else if (AnimationPlayer.m_FrameIndex == 6)
                             {
                                 AddScreen(new cFinal(serviceProvider, GraphicsDeviceManager));
                                 RemoveScreen(this);
@@ -317,7 +317,7 @@ namespace Loxi
                     g.GraphicsDevice.Clear(Color.WhiteSmoke);
                     AnimationPlayer.Draw(gametime, g, PositionWario, SpriteEffects.None);
 
-                    if (APDon.Animation != null || APMich.Animation != null || APLeo.Animation != null || APRaph.Animation != null)
+                    if (APDon.m_Animation != null || APMich.m_Animation != null || APLeo.m_Animation != null || APRaph.m_Animation != null)
                     {
                         APMich.Draw(gametime, g, PositionMich, SpriteEffects.None);
                         APDon.Draw(gametime, g, PositionDon, DonEffect);

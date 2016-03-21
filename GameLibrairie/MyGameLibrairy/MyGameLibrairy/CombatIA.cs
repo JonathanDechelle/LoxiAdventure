@@ -69,7 +69,7 @@ namespace MyGameLibrairy
                 if (Rectangle.Intersects(Joueur.RecPerso))
                 {
                     AttackYou = true;
-                    if (AnimationPlayer.FrameIndex == 4)
+                    if (AnimationPlayer.m_FrameIndex == 4)
                     {
                         DamageYou = true;
                     }

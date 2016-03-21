@@ -86,7 +86,7 @@ namespace Loxi
              if (Compteur == 5)
              {
                  AnimationPlayer.Draw(gametime, g, new Vector2(200, 400), SpriteEffects.None);
-                 if (AnimationPlayer.FrameIndex == 13)
+                 if (AnimationPlayer.m_FrameIndex == 13)
                  {
                      g.Draw(RessourcesLoxi.BulleParole, BullePosition, null, Color.White, 20, new Vector2(), SpriteEffects.None, 0);
                      g.DrawString(RessourcesLoxi.Texte2, "Bon .. Une \nchose de faite. \nAu cas où que tu\nt'en sorte vivant \nje te réserve une \nbonne suprise à \n    ton retour\n      Mouahaha!", ParolePosition, CouleurParole);
