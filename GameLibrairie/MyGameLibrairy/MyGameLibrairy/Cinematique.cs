@@ -2,76 +2,82 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 namespace MyGameLibrairy
 {
-    /// <summary>
-    /// Classe servant a crée un se,blant de cinematique
-    /// </summary>
-   public class Cinematique
+    public class Diapositive
     {
+        public Texture2D m_Image;
+        public string m_Text;
+        public Color m_TextColor;
+        public Color m_BackgroundColor;
+        public SpriteFont m_Font;
+        private string m_TexureName;
 
-       // Texture2D[] images;
-
-        string[] textes;
-
-        int currentSlide;
-        SpriteFont font;
-        bool display;
-        Vector2 Position;
-        
-        public  Cinematique(Vector2 NewPosition,SpriteFont NewFont)
+        public Diapositive(string aTextureName, string aText, Color aTextColor, Color aBackgroundColor, SpriteFont aFont)
         {
-            currentSlide = 0;
-            display = false;
-            textes = new string[4] { 
- 
-                "C'est l'histoire d'un peuple de chats vivant fièrement et\npaisiblement sur la coline du mont Shizen.", 
- 
-                "Mais un jour, la divinité d'un clan jaloux se réveilla, lui permettant\nde rassembler une armée de cadavres afin d'exterminer les\nautres clans.", 
- 
-                "Toute la tribu fut rapidement dévastée par cette armée malfaisante.", 
- 
-                "C'est ainsi que commenca la longue quête d'Aneiko, héro des Shizen,\nqui espère sauver son peuple grâce au pouvoir de la nature." };
+            m_TexureName = aTextureName;
+            m_Text = aText;
+            m_TextColor = aTextColor;
+            m_BackgroundColor = aBackgroundColor;
+            m_Font = aFont;
+        }
 
-            Position = NewPosition;
-            font = NewFont;
+        public void LoadContent(ContentManager aContent)
+        {
+            m_Image = aContent.Load<Texture2D>(m_TexureName);
+        }
+    }
 
+    public class Cinematique
+    {
+        private Diapositive[] m_Diapositives;
+        private Diapositive m_CurrentDiapo
+        {
+            get { return m_Diapositives[m_IndexDiapo]; }
+        }
+
+        private int m_IndexDiapo;
+        public System.Action OnCinematicFinished;
+
+        public Cinematique(Diapositive[] aDiapostives)
+        {
+            m_Diapositives = aDiapostives;
         }
 
         public void Play()
         {
-            currentSlide = 0;
-            display = true;
+            m_IndexDiapo = 0;
         }
 
         public void Update()
         {
-            if (display && KeyboardHelper.KeyPressed (Keys.L)) 
-            currentSlide++;
-
-            if (currentSlide > textes.Length - 1)
-                display = false;
-        }
-
-
-
-        public void Draw(SpriteBatch g, GameTime gameTime)
-        {
-
-            if (display)
+            if (KeyboardHelper.KeyPressed(Keys.Space))
             {
-                g.DrawString(font, textes[currentSlide],Position, Color.White);
+                m_IndexDiapo++;
             }
 
+            if (m_IndexDiapo > m_Diapositives.Length - 1)
+            {
+                if (OnCinematicFinished != null)
+                {
+                    OnCinematicFinished();
+                }
+            }
         }
 
+        public void Draw(SpriteBatch aSpritebatch, GameTime aGameTime)
+        {
+            aSpritebatch.GraphicsDevice.Clear(m_CurrentDiapo.m_BackgroundColor);
+            aSpritebatch.Draw(m_CurrentDiapo.m_Image, new Rectangle(0, 0, 800, 500), Color.White);
+            aSpritebatch.DrawString(m_CurrentDiapo.m_Font, m_CurrentDiapo.m_Text, new Vector2(30, 30), m_CurrentDiapo.m_TextColor);
+            aSpritebatch.DrawString(m_CurrentDiapo.m_Font, "Appuyer \n sur \n Espace", new Vector2(670, 200), m_CurrentDiapo.m_TextColor);
+        }
     }
+} 
 
-
-}
 
