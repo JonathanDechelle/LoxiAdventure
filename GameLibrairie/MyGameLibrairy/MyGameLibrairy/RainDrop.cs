@@ -12,30 +12,30 @@ namespace MyGameLibrairy
     /// </summary>
     public class RainDrop
     {
-        Texture2D texture;
-        Vector2 position;
-        Vector2 speed;
+        Texture2D m_Texture;
+        Vector2 m_Position;
+        Vector2 m_Speed;
 
         public Vector2 Position
         {
-            get { return position; }
+            get { return m_Position; }
         }
 
-        public RainDrop(Texture2D NewTexture, Vector2 NewPosition, Vector2 NewSpeed)
+        public RainDrop(Texture2D aTexture, Vector2 aPosition, Vector2 aSpeed)
         {
-            texture = NewTexture;
-            position = NewPosition;
-            speed = NewSpeed;
+            m_Texture = aTexture;
+            m_Position = aPosition;
+            m_Speed = aSpeed;
         }
 
         public void Update()
         {
-            position += speed;
+            m_Position += m_Speed;
         }
 
-        public void Draw(SpriteBatch g)
+        public void Draw(SpriteBatch aSpritebatch)
         {
-            g.Draw(texture, position, Color.White);
+            aSpritebatch.Draw(m_Texture, m_Position, Color.White);
         }
     }
 }
