@@ -89,7 +89,7 @@ namespace Loxi
                     break;
                 #endregion
 
-                case StateofGame.Game: foreach (ObjCollisionable platform in Platforms) { platform.Update(gameTime); }
+                case StateofGame.Game: 
                     if (Joueur != null)
                     {
                         Seconde += (float)gameTime.ElapsedGameTime.TotalSeconds;

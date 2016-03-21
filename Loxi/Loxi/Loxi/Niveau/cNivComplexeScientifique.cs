@@ -105,11 +105,6 @@ namespace Loxi
                 Animationplayer.PlayAnimation(RifleSoldierPatrouille);
             }
 
-            foreach (ObjCollisionable muret in Mur)
-            {
-                muret.Update(gameTime);
-            }
-
             switch(CurrentEmplacement)
             {
                 #region OutBase

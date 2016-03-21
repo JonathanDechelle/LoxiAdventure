@@ -100,14 +100,7 @@ namespace Loxi
                 foreach (Ennemi enemy in ennemies)
                 {
                     enemy.Update(m_GraphicsDeviceManager.GraphicsDevice, gameTime);
-                }
-
-                foreach (ObjCollisionable Object in Obstacles)
-                {
-                    Object.Update(gameTime);
-                }
-
-                
+                }                
             }
 
             else if (Paused)

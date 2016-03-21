@@ -79,7 +79,7 @@ namespace MyGameLibrairy
             {
                 foreach (ObjCollisionable Objects in Obstacles)
                 {
-                    if (RecPerso.isOnTopOf(Objects.DimObj))
+                    if (RecPerso.isOnTopOf(Objects.m_DimObj))
                     {
                         Speed.Y = 0;
                         HasJump = false;
@@ -90,20 +90,20 @@ namespace MyGameLibrairy
                     else
                         Gravity = true;
                    
-                        if (RecPerso.isOnBottomOf(Objects.DimObj))
+                        if (RecPerso.isOnBottomOf(Objects.m_DimObj))
                         {
                             SousObject = true;
                             Speed.Y = 0;
                             
                         }
                         else
-                            if (RecPerso.isOnRightOf(Objects.DimObj))
+                            if (RecPerso.isOnRightOf(Objects.m_DimObj))
                             {
                                 DroiteObject = true;
                                 Speed.X = 0;
                                 
                             }
-                        if (RecPerso.isOnLeftOf(Objects.DimObj))
+                        if (RecPerso.isOnLeftOf(Objects.m_DimObj))
                         {
                             GaucheObject = true;
                             Speed.X = 0;

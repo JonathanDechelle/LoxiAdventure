@@ -13,51 +13,43 @@ namespace MyGameLibrairy
     /// </summary>
     public class ObjCollisionable
     {
-        //VARIABLE 
-        public Rectangle DimObj;
-        Texture2D Texture;
-        Color Color;
-        public bool Loop;
-        public float Rotation;
+        public Rectangle m_DimObj;
+        public bool m_Loop;
+        public float m_Rotation;
+
+        private Texture2D m_Texture;
+        private Color m_Color;
 
         //CONSTRUCTOR
         public ObjCollisionable(int x, int y, int SizeX, int SizeY, Color Color)
         {
-            this.DimObj = new Rectangle(x, y, SizeX, SizeY);
-            this.Color = Color;
+            m_DimObj = new Rectangle(x, y, SizeX, SizeY);
+            m_Color = Color;
         }
 
-        public ObjCollisionable(int x, int y, int SizeX, int SizeY,bool Loop)
+        public ObjCollisionable(int x, int y, int SizeX, int SizeY, bool Loop)
         {
-            this.DimObj = new Rectangle(x, y, SizeX, SizeY);
-            this.Loop = Loop;
+            m_DimObj = new Rectangle(x, y, SizeX, SizeY);
+            m_Loop = Loop;
         }
 
-        public ObjCollisionable(int x, int y, int SizeX, int SizeY, bool Loop,float Rotation)
+        public ObjCollisionable(int x, int y, int SizeX, int SizeY, bool Loop, float Rotation)
         {
-            this.DimObj = new Rectangle(x, y, SizeX, SizeY);
-            this.Loop = Loop;
-            this.Rotation = Rotation;
+            m_DimObj = new Rectangle(x, y, SizeX, SizeY);
+            m_Loop = Loop;
+            m_Rotation = Rotation;
         }
 
-        public ObjCollisionable(int x, int y,Texture2D Texture,int SizeX,int SizeY,Color Color)
+        public ObjCollisionable(int x, int y, Texture2D Texture, int SizeX, int SizeY, Color Color)
         {
-            this.Texture = Texture;
-            this.DimObj = new Rectangle(x, y, SizeX, SizeY);
-            this.Color = Color;
+            m_Texture = Texture;
+            m_DimObj = new Rectangle(x, y, SizeX, SizeY);
+            m_Color = Color;
         }
 
-        //METHODE
-        //UPDATE DRAW
-        public  void Update(GameTime gameTime)
+        public void Draw(SpriteBatch g)
         {
-           
-        }
-
-        public  void Draw(SpriteBatch g)
-        {
-            g.Draw(Texture, DimObj, Color);
-           // g.Draw(RessourceSonic3.Test, DimObj, Color.Blue);
+            g.Draw(m_Texture, m_DimObj, m_Color);
         }
     }
 }

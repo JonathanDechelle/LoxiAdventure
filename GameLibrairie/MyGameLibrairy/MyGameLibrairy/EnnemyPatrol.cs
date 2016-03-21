@@ -49,7 +49,7 @@ namespace MyGameLibrairy
             {
                 foreach (ObjCollisionable obstacle in Obstacles)
                 {
-                    if (Rectangle.isOnRightOf(obstacle.DimObj))
+                    if (Rectangle.isOnRightOf(obstacle.m_DimObj))
                     {
                         Distance = -1;
                     }
