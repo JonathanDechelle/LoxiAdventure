@@ -22,12 +22,13 @@ namespace MyGameLibrairy
 
         public Animation(Texture2D aTexture, int aFrameWidth, float aFrameTime, float aResize, bool aIsLooping)
         {
-            this.m_Texture = aTexture;
-            this.m_FrameWidth = aFrameWidth;
-            this.m_FrameTime = aFrameTime;
-            this.m_Resize = aResize;
-            this.m_IsLooping = aIsLooping;
-            this.m_FrameCount = aTexture.Width / this.m_FrameWidth;
+            m_Texture = aTexture;
+            m_FrameWidth = aFrameWidth;
+            m_FrameHeight = m_Texture.Height;
+            m_FrameTime = aFrameTime;
+            m_Resize = aResize;
+            m_IsLooping = aIsLooping;
+            m_FrameCount = aTexture.Width / this.m_FrameWidth;
         }
     }
 }
