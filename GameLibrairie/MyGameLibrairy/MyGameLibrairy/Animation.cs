@@ -20,14 +20,14 @@ namespace MyGameLibrairy
         public float m_Resize;
         public bool m_IsLooping;
 
-        public Animation(Texture2D Texture, int FrameWidth, float FrameTime, float Resize, bool IsLooping)
+        public Animation(Texture2D aTexture, int aFrameWidth, float aFrameTime, float aResize, bool aIsLooping)
         {
-            this.m_Texture = Texture;
-            this.m_FrameWidth = FrameWidth;
-            this.m_FrameTime = FrameTime;
-            this.m_Resize = Resize;
-            this.m_IsLooping = IsLooping;
-            this.m_FrameCount = Texture.Width / this.m_FrameWidth;
+            this.m_Texture = aTexture;
+            this.m_FrameWidth = aFrameWidth;
+            this.m_FrameTime = aFrameTime;
+            this.m_Resize = aResize;
+            this.m_IsLooping = aIsLooping;
+            this.m_FrameCount = aTexture.Width / this.m_FrameWidth;
         }
     }
 }
