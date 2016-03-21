@@ -13,12 +13,12 @@ namespace MyGameLibrairy
     /// </summary>
     public class Background
     {
-        public Texture2D texture;
-        public Rectangle Rectangle;
+        public Texture2D m_Texture;
+        public Rectangle m_Rectangle;
 
-        public void Draw(SpriteBatch g)
+        public void Draw(SpriteBatch aSpritebatch)
         {
-            g.Draw(texture, Rectangle, Color.White);
+            aSpritebatch.Draw(m_Texture, m_Rectangle, Color.White);
         }
     }
 
@@ -27,12 +27,13 @@ namespace MyGameLibrairy
     /// </summary>
     public class Scrolling : Background
     {
-        public Scrolling(Texture2D newTexture, Rectangle newRectangle)
+        public Scrolling(Texture2D aTexture, Rectangle aRectangle)
         {
-            texture = newTexture;
-            Rectangle = newRectangle;
+            m_Texture = aTexture;
+            m_Rectangle = aRectangle;
         }
 
+        //AutoScroll
         public void Update()
         {
             //if (KeyboardHelper.KeyHold(Keys.A)||KeyboardHelper.KeyHold(Keys.Left))
@@ -52,7 +53,7 @@ namespace MyGameLibrairy
             //    Rectangle.Y++;
             //}
 
-            Rectangle.X--;
+            m_Rectangle.X--;
         }
     }
 }
