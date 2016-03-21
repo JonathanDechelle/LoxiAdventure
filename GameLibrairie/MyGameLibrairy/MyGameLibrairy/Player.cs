@@ -375,15 +375,15 @@ namespace MyGameLibrairy
         {
             foreach (Bullets bullet in bullets)
             { 
-                bullet.Position += bullet.Speed;
-                bullet.Rectangle=new Rectangle((int)bullet.Position.X,(int)bullet.Position.Y,bullet.Texture.Width,bullet.Texture.Height);
-                if (Vector2.Distance(bullet.Position, Position) > 500)
-                    bullet.isVisible = false;
+                bullet.m_Position += bullet.m_Speed;
+                bullet.m_Rectangle=new Rectangle((int)bullet.m_Position.X,(int)bullet.m_Position.Y,bullet.m_Texture.Width,bullet.m_Texture.Height);
+                if (Vector2.Distance(bullet.m_Position, Position) > 500)
+                    bullet.m_IsVisible = false;
             }
 
             for (int i = 0; i < bullets.Count(); i++)
             {
-                if (!bullets[i].isVisible)
+                if (!bullets[i].m_IsVisible)
                 {
                     bullets.RemoveAt(i);
                     i--;
@@ -401,18 +401,18 @@ namespace MyGameLibrairy
         public void Shoot()
         {
             Bullets newBullet = new Bullets(RessourcesLoxi.BalleJoueur);
-            newBullet.Speed = new Vector2((float)Math.Cos(AngleTir), (float)Math.Sin(AngleTir)) * 5f + Speed;
+            newBullet.m_Speed = new Vector2((float)Math.Cos(AngleTir), (float)Math.Sin(AngleTir)) * 5f + Speed;
             if (flip == SpriteEffects.FlipHorizontally)
             {
-                newBullet.Speed = -newBullet.Speed;
-                newBullet.SpriteEffect = flip;
+                newBullet.m_Speed = -newBullet.m_Speed;
+                newBullet.m_SpriteEffect = flip;
             }
             else
-                newBullet.SpriteEffect = SpriteEffects.None;
+                newBullet.m_SpriteEffect = SpriteEffects.None;
             
-            newBullet.Position = Position + newBullet.Speed * 5;
-            newBullet.Position.Y -= RecPerso.Height;
-            newBullet.isVisible = true;
+            newBullet.m_Position = Position + newBullet.m_Speed * 5;
+            newBullet.m_Position.Y -= RecPerso.Height;
+            newBullet.m_IsVisible = true;
 
             if (bullets.Count() < 20)
                 bullets.Add(newBullet);

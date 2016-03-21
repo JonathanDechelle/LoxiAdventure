@@ -60,13 +60,13 @@ namespace MyGameLibrairy
         {
             foreach (Bullets bullet in bullets)
             {
-                bullet.Position += bullet.Speed;
-                if (bullet.Position.X < 0)
-                    bullet.isVisible = false;
+                bullet.m_Position += bullet.m_Speed;
+                if (bullet.m_Position.X < 0)
+                    bullet.m_IsVisible = false;
             }
             for (int i = 0; i < bullets.Count; i++)
             {
-                if (!bullets[i].isVisible)
+                if (!bullets[i].m_IsVisible)
                 {
                     bullets.RemoveAt(i);
                     i--;
@@ -78,11 +78,11 @@ namespace MyGameLibrairy
         public void ShootBullets()
         {
             Bullets NewBullets = new Bullets(BulletsTexture);
-            NewBullets.Speed.X = Speed.X - 3;
-            NewBullets.Position = new Vector2(Position.X + NewBullets.Speed.X,
+            NewBullets.m_Speed.X = Speed.X - 3;
+            NewBullets.m_Position = new Vector2(Position.X + NewBullets.m_Speed.X,
                                             Position.Y + (Texture.Height / 2) - (Texture.Width / 2));
 
-            NewBullets.isVisible = true;
+            NewBullets.m_IsVisible = true;
             if (bullets.Count() < 3)
             {
                 bullets.Add(NewBullets);
