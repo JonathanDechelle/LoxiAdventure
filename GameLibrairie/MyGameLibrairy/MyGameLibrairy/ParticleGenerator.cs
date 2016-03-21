@@ -13,49 +13,50 @@ namespace MyGameLibrairy
     /// </summary>
     public  class ParticleGenerator
     {
-        Texture2D texture;
-        float spawnWidth;
-        float density;
+        private Texture2D m_Texture;
+        private float m_SpawnWidth;
+        private float m_Density;
+        private float m_Timer;
+        private Random m_Rand1, m_Rand2;
+        private List<RainDrop> m_Raindrops = new List<RainDrop>();
 
-        List<RainDrop> raindrops = new List<RainDrop>();
+        private const float START_HEIGHT = -50f;
+        private const float MIN_SPEED = 1f;
 
-        float Timer;
-
-        Random rand1, rand2;
-
-        public ParticleGenerator(Texture2D NewTexture, float NewSpawnWidth, float NewDensity)
+        public ParticleGenerator(Texture2D aTexture, float aSpawnWidth, float aDensity)
         {
-            texture = NewTexture;
-            spawnWidth = NewSpawnWidth;
-            density = NewDensity;
+            m_Texture = aTexture;
+            m_SpawnWidth = aSpawnWidth;
+            m_Density = aDensity;
 
-            rand1 = new Random();
-            rand2 = new Random();
+            m_Rand1 = new Random();
+            m_Rand2 = new Random();
         }
 
         public void CreateParticle()
         {
-            //double anything =rand1.Next();
-            raindrops.Add(new RainDrop(texture, new Vector2(-50 + (float)rand1.NextDouble() * spawnWidth, 0)
-                                              , new Vector2(1, rand2.Next(5, 8))));                                 
+            m_Raindrops.Add(new RainDrop(
+                m_Texture,
+                new Vector2(START_HEIGHT + (float)m_Rand1.NextDouble() * m_SpawnWidth, 0),
+                new Vector2(MIN_SPEED, m_Rand2.Next(5, 8))));                                 
         }
 
-        public void Update(GameTime gametime, GraphicsDevice graphics)
+        public void Update(GameTime aGametime, GraphicsDevice graphics)
         {
-            Timer += (float)gametime.ElapsedGameTime.TotalSeconds;
+            m_Timer += (float)aGametime.ElapsedGameTime.TotalSeconds;
 
-            while (Timer > 0)
+            while (m_Timer > 0)
             {
-                Timer -= 1f / density;
+                m_Timer -= 1f / m_Density;
                 CreateParticle();
             }
 
-            for (int i = 0; i < raindrops.Count; i++)
+            for (int i = 0; i < m_Raindrops.Count; i++)
             {
-                raindrops[i].Update();
-                if (raindrops[i].Position.Y > graphics.Viewport.Height)
+                m_Raindrops[i].Update();
+                if (m_Raindrops[i].Position.Y > graphics.Viewport.Height)
                 {
-                    raindrops.RemoveAt(i);
+                    m_Raindrops.RemoveAt(i);
                     i--;
                 }
             }
@@ -63,7 +64,7 @@ namespace MyGameLibrairy
 
         public void Draw(SpriteBatch g)
         {
-            foreach (RainDrop raindrop in raindrops)
+            foreach (RainDrop raindrop in m_Raindrops)
                 raindrop.Draw(g);
         }
     }
