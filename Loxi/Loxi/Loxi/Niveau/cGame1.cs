@@ -84,22 +84,22 @@ namespace Loxi
 
             KeyboardHelper.PlayerState = Keyboard.GetState();
        
-            for (int i = 0; i < GameScreen.listGameScreen.Count; i++)
+            for (int i = 0; i < GameScreen.m_ListGameScreen.Count; i++)
             {
-                if (i == GameScreen.listGameScreen.Count - 1)
-                    GameScreen.listGameScreen[i].IsOnTop = true;
+                if (i == GameScreen.m_ListGameScreen.Count - 1)
+                    GameScreen.m_ListGameScreen[i].IsOnTop = true;
                 else
-                    GameScreen.listGameScreen[i].IsOnTop = false;
+                    GameScreen.m_ListGameScreen[i].IsOnTop = false;
                 //If the GameScreen requires to be on top and is on top or doesn't requires focus to be updated.
-                if ((GameScreen.listGameScreen[i].RequireFocus && GameScreen.listGameScreen[i].IsOnTop) || !GameScreen.listGameScreen[i].RequireFocus)
+                if ((GameScreen.m_ListGameScreen[i].RequireFocus && GameScreen.m_ListGameScreen[i].IsOnTop) || !GameScreen.m_ListGameScreen[i].RequireFocus)
                 {
                     //Update everything in the GameScreen List and delete it if not Alive.
-                    GameScreen.listGameScreen[i].Update(gameTime);
-                    if (!GameScreen.listGameScreen[i].Alive)//Delete, then decrement i to go back at the last instance in the list.
-                        GameScreen.listGameScreen.RemoveAt(i--);
+                    GameScreen.m_ListGameScreen[i].Update(gameTime);
+                    if (!GameScreen.m_ListGameScreen[i].Alive)//Delete, then decrement i to go back at the last instance in the list.
+                        GameScreen.m_ListGameScreen.RemoveAt(i--);
                 }
             }
-            if (GameScreen.listGameScreen.Count == 0)
+            if (GameScreen.m_ListGameScreen.Count == 0)
                 this.Exit();
 
             KeyboardHelper.PlayerStateLast = Keyboard.GetState();
@@ -116,10 +116,10 @@ namespace Loxi
             GraphicsDevice.Clear(Color.White);
            
             // TODO: Add your drawing code here
-            for (int i = 0; i < GameScreen.listGameScreen.Count; i++)
-                if ((GameScreen.listGameScreen[i].RequireDrawFocus && GameScreen.listGameScreen[i].IsOnTop) || !GameScreen.listGameScreen[i].RequireDrawFocus)
-                    if (GameScreen.listGameScreen[i].Alive)
-                        GameScreen.listGameScreen[i].Draw(gameTime,spriteBatch);
+            for (int i = 0; i < GameScreen.m_ListGameScreen.Count; i++)
+                if ((GameScreen.m_ListGameScreen[i].RequireDrawFocus && GameScreen.m_ListGameScreen[i].IsOnTop) || !GameScreen.m_ListGameScreen[i].RequireDrawFocus)
+                    if (GameScreen.m_ListGameScreen[i].Alive)
+                        GameScreen.m_ListGameScreen[i].Draw(gameTime,spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

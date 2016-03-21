@@ -69,7 +69,7 @@ namespace Loxi
 
         public override void Load()
         {
-            Joueur.Load(Content);
+            Joueur.Load(m_Content);
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(RessourcesLoxi.SongNiv1);
         }
@@ -91,7 +91,7 @@ namespace Loxi
                     if (Convert.ToInt32(TimerFin) == 5)
                     {
                         RemoveScreen(this);
-                        AddScreen(new cNivComplexeScientifique(serviceProvider, GraphicsDeviceManager));
+                        AddScreen(new cNivComplexeScientifique(m_ServiceProvider, m_GraphicsDeviceManager));
                     }
                     
                 }
@@ -204,7 +204,7 @@ namespace Loxi
                             {
                                 Mur.RemoveRange(0, Mur.Count);
                                 EnnemiesPatrols.RemoveRange(0, EnnemiesPatrols.Count);
-                                GameScreen.AddScreen(new cMovie2(serviceProvider, GraphicsDeviceManager));
+                                GameScreen.AddScreen(new cMovie2(m_ServiceProvider, m_GraphicsDeviceManager));
                                 GameScreen.RemoveScreen(this);
                             }
                             break;

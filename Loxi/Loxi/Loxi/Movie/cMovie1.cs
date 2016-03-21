@@ -52,7 +52,7 @@ namespace Loxi
 
             for (int i = 0; i < Diapos.Length; i++)
             {
-                Diapos[i].LoadContent(Content);
+                Diapos[i].LoadContent(m_Content);
             }
 
             Cinematique = new Cinematique(Diapos);
@@ -76,7 +76,7 @@ namespace Loxi
         {
             Cinematique.OnCinematicFinished -= ChangeScreen;
             MediaPlayer.Pause();
-            GameScreen.AddScreen(new cNivComplexeScientifique(serviceProvider, GraphicsDeviceManager));
+            GameScreen.AddScreen(new cNivComplexeScientifique(m_ServiceProvider, m_GraphicsDeviceManager));
             GameScreen.RemoveScreen(this);
         }
 

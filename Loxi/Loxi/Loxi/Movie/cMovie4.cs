@@ -204,7 +204,7 @@ namespace Loxi
                                 TableParole[I] = "NOOOOOOOOOOOOOOOOO";
                             else if (AnimationPlayer.m_FrameIndex == 6)
                             {
-                                AddScreen(new cFinal(serviceProvider, GraphicsDeviceManager));
+                                AddScreen(new cFinal(m_ServiceProvider, m_GraphicsDeviceManager));
                                 RemoveScreen(this);
                             }
 

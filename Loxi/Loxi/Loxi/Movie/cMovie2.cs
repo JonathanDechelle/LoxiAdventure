@@ -70,7 +70,7 @@ namespace Loxi
              AnimationPlayer.PlayAnimation(DragInNiv2);
              else if (Compteur == 6)
              {
-                 GameScreen.AddScreen(new cNivTortueNinja(serviceProvider, GraphicsDeviceManager));
+                 GameScreen.AddScreen(new cNivTortueNinja(m_ServiceProvider, m_GraphicsDeviceManager));
                  GameScreen.RemoveScreen(this);
              }
 

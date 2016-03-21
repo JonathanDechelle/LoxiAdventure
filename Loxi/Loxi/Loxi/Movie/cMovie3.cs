@@ -146,7 +146,7 @@ namespace Loxi
                                         EnterVisible = true;
                                         if (KeyboardHelper.KeyPressed(Keys.Enter))
                                         {
-                                            AddScreen(new cNivLiberation(serviceProvider, GraphicsDeviceManager));
+                                            AddScreen(new cNivLiberation(m_ServiceProvider, m_GraphicsDeviceManager));
                                             RemoveScreen(this);
                                         }
                                     }

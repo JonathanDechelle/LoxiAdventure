@@ -13,20 +13,20 @@ namespace MyGameLibrairy
     /// </summary>
     public abstract class GameScreen
     {
-        protected ContentManager Content;
-        protected IServiceProvider serviceProvider;
-        public static List<GameScreen> listGameScreen = new List<GameScreen>();
-        public static GraphicsDeviceManager GraphicsDeviceManager;
+        protected ContentManager m_Content;
+        protected IServiceProvider m_ServiceProvider;
+        public static List<GameScreen> m_ListGameScreen = new List<GameScreen>();
+        public static GraphicsDeviceManager m_GraphicsDeviceManager;
 
         public static void AddScreen(GameScreen Screen)
         {
             Screen.Load();
-            listGameScreen.Add(Screen);
+            m_ListGameScreen.Add(Screen);
         }
 
         public static void RemoveScreen(int Pos)
         {
-            listGameScreen[Pos].Alive = false;
+            m_ListGameScreen[Pos].Alive = false;
         }
 
         public static void RemoveScreen(GameScreen Screen)
@@ -36,9 +36,9 @@ namespace MyGameLibrairy
 
         public static void RemoveAllScreens(GameScreen ExcludedScreen = null)
         {
-            for (int S = 0; S < listGameScreen.Count; S++)
-                if (listGameScreen[S] != ExcludedScreen)
-                    listGameScreen[S].Alive = false;
+            for (int S = 0; S < m_ListGameScreen.Count; S++)
+                if (m_ListGameScreen[S] != ExcludedScreen)
+                    m_ListGameScreen[S].Alive = false;
         }
 
 
@@ -74,10 +74,10 @@ namespace MyGameLibrairy
         /// <param name="serviceProvider">A IServiceProvider used to create a new ContentManager.</param>
         public GameScreen(IServiceProvider serviceProvider,GraphicsDeviceManager graphics)
         {
-            Content = new ContentManager(serviceProvider);
-            Content.RootDirectory = "Content";
-            GraphicsDeviceManager = graphics;
-            this.serviceProvider = serviceProvider;
+            m_Content = new ContentManager(serviceProvider);
+            m_Content.RootDirectory = "Content";
+            m_GraphicsDeviceManager = graphics;
+            this.m_ServiceProvider = serviceProvider;
         }
         public abstract void Load();
         /// <summary>
@@ -109,14 +109,14 @@ namespace MyGameLibrairy
             this.Screens = Screens;
             this.BackgroundBuffer = BackgroundBuffer;
             //Remove everything else.
-            for (int i = 0; i < GameScreen.listGameScreen.Count; i++)
+            for (int i = 0; i < GameScreen.m_ListGameScreen.Count; i++)
                 GameScreen.RemoveScreen(i);
         }
         public override void Load()
         { }
         public override void Update(GameTime gameTime)
         {//If all the GameScreen are unloaded and only this GameScreen is loaded.
-            if (GameScreen.listGameScreen.Count == 1)
+            if (GameScreen.m_ListGameScreen.Count == 1)
             {//Ask the Game to remove this GameScreen the next time it update.
                 GameScreen.RemoveScreen(this);
                 //Create and load the pending GameScreen array.

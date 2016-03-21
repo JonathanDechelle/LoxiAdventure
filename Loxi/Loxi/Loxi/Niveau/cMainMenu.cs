@@ -36,7 +36,7 @@ namespace Loxi
         {
             btnPlay = new Button(RessourcesLoxi.MainMenuButton, new Vector2(600, 20), 3);
             btnExplication = new Button(RessourcesLoxi.ExplicationMainButton, new Vector2(600, 200), 3);
-            rain = new ParticleGenerator(RessourcesLoxi.Rain, GraphicsDeviceManager.GraphicsDevice.Viewport.Width,80);
+            rain = new ParticleGenerator(RessourcesLoxi.Rain, m_GraphicsDeviceManager.GraphicsDevice.Viewport.Width,80);
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(RessourcesLoxi.SongImageTitre);
         }
@@ -61,17 +61,17 @@ namespace Loxi
                     btnExplication.Update(mouse);
                     break;
 
-                case GameState.Option: GameScreen.AddScreen(new cExplicationControle(serviceProvider, GraphicsDeviceManager));
+                case GameState.Option: GameScreen.AddScreen(new cExplicationControle(m_ServiceProvider, m_GraphicsDeviceManager));
                                        GameScreen.RemoveScreen(this);
                     break;
 
-                case GameState.Playing: GameScreen.AddScreen(new cMovie1(serviceProvider, GraphicsDeviceManager));
+                case GameState.Playing: GameScreen.AddScreen(new cMovie1(m_ServiceProvider, m_GraphicsDeviceManager));
                                         GameScreen.RemoveScreen(this);
                     break;
 
             }
 
-            rain.Update(gameTime, GraphicsDeviceManager.GraphicsDevice);
+            rain.Update(gameTime, m_GraphicsDeviceManager.GraphicsDevice);
         }
 
 

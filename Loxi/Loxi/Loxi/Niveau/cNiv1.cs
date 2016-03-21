@@ -56,7 +56,7 @@ namespace Loxi
 
         public override void Load()
         {
-            Player.Load(Content);
+            Player.Load(m_Content);
             pausedTexture = RessourcesLoxi.PausedMenu;
             pausedrectangle = new Rectangle(0, 0, pausedTexture.Width, pausedTexture.Height);
             btnPlay = new Button(RessourcesLoxi.MainMenuButton,new Vector2(570,125),3);
@@ -99,7 +99,7 @@ namespace Loxi
 
                 foreach (Ennemi enemy in ennemies)
                 {
-                    enemy.Update(GraphicsDeviceManager.GraphicsDevice, gameTime);
+                    enemy.Update(m_GraphicsDeviceManager.GraphicsDevice, gameTime);
                 }
 
                 foreach (ObjCollisionable Object in Obstacles)

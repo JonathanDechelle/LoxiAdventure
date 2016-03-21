@@ -78,7 +78,7 @@ namespace Loxi
 
         public override void Load()
         {
-            Joueur.Load(Content);
+            Joueur.Load(m_Content);
         }
 
         public override void Update(GameTime gameTime)
@@ -218,7 +218,7 @@ namespace Loxi
                         Parole = "Maintenant tu \npourra peut être \nsortir de la fosse \n,avec ta force \n   actuelle plus \n      celle du \n          ninja";
                     if (Timer >= 18)
                     {
-                        AddScreen(new cMovie3(serviceProvider, GraphicsDeviceManager));
+                        AddScreen(new cMovie3(m_ServiceProvider, m_GraphicsDeviceManager));
                         RemoveScreen(this);
                     }
                     break;
@@ -284,7 +284,7 @@ namespace Loxi
                     if (Convert.ToInt32(TimerFin) == 3)
                     {
                         RemoveScreen(this);
-                        AddScreen(new cNivTortueNinja(serviceProvider, GraphicsDeviceManager));
+                        AddScreen(new cNivTortueNinja(m_ServiceProvider, m_GraphicsDeviceManager));
                     }
 
                 }

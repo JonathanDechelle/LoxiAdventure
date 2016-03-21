@@ -55,8 +55,8 @@ namespace Loxi
                     {
                         GameState = StateofGame.Game;
                         Joueur = new Player(false, true);
-                        Joueur.Load(Content);
-                        Camera = new Camera(GraphicsDeviceManager.GraphicsDevice.Viewport);
+                        Joueur.Load(m_Content);
+                        Camera = new Camera(m_GraphicsDeviceManager.GraphicsDevice.Viewport);
                          //Camera.Zoom -= 50;
                         Platforms.Add(new ObjCollisionable(0, 200, RessourcesLoxi.Test, 300, 300, Color.Blue));
                         Platforms.Add(new ObjCollisionable(400, 400, RessourcesLoxi.Test, 200, 200, Color.YellowGreen));
@@ -122,12 +122,12 @@ namespace Loxi
                         {
                             if (Reussi)
                             {
-                                AddScreen(new cMovie4(serviceProvider, GraphicsDeviceManager));
+                                AddScreen(new cMovie4(m_ServiceProvider, m_GraphicsDeviceManager));
                                 RemoveScreen(this);
                             }
                             else
                             {
-                                AddScreen(new cNivLiberation(serviceProvider, GraphicsDeviceManager));
+                                AddScreen(new cNivLiberation(m_ServiceProvider, m_GraphicsDeviceManager));
                                 RemoveScreen(this);
                             }
                         }

@@ -25,7 +25,7 @@ namespace Loxi
 
          public override void Load()
          {
-             Joueur.Load(Content);
+             Joueur.Load(m_Content);
          }
 
          public override void Update(GameTime gameTime)
@@ -34,7 +34,7 @@ namespace Loxi
 
              if(KeyboardHelper.KeyPressed(Keys.Escape))
              {
-                 GameScreen.AddScreen(new cMainMenu(serviceProvider, GraphicsDeviceManager));
+                 GameScreen.AddScreen(new cMainMenu(m_ServiceProvider, m_GraphicsDeviceManager));
                  GameScreen.RemoveScreen(this);
              }
 
