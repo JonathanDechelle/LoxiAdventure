@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxi", "Loxi\Loxi\Loxi.csproj", "{6D6577B6-4CF0-4265-AF34-F72D673D419A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoxiContent", "Loxi\LoxiContent\LoxiContent.contentproj", "{DBCEAF50-C311-4E93-80A4-9276BE698F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGameLibrairy", "..\GameLibrairie\MyGameLibrairy\MyGameLibrairy\MyGameLibrairy.csproj", "{871ED0E8-7B95-4D5A-BC24-F7409C91026E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D6577B6-4CF0-4265-AF34-F72D673D419A}.Debug|x86.ActiveCfg = Debug|x86
+		{6D6577B6-4CF0-4265-AF34-F72D673D419A}.Debug|x86.Build.0 = Debug|x86
+		{6D6577B6-4CF0-4265-AF34-F72D673D419A}.Release|x86.ActiveCfg = Release|x86
+		{6D6577B6-4CF0-4265-AF34-F72D673D419A}.Release|x86.Build.0 = Release|x86
+		{DBCEAF50-C311-4E93-80A4-9276BE698F06}.Debug|x86.ActiveCfg = Debug|x86
+		{DBCEAF50-C311-4E93-80A4-9276BE698F06}.Release|x86.ActiveCfg = Release|x86
+		{871ED0E8-7B95-4D5A-BC24-F7409C91026E}.Debug|x86.ActiveCfg = Debug|x86
+		{871ED0E8-7B95-4D5A-BC24-F7409C91026E}.Debug|x86.Build.0 = Debug|x86
+		{871ED0E8-7B95-4D5A-BC24-F7409C91026E}.Release|x86.ActiveCfg = Release|x86
+		{871ED0E8-7B95-4D5A-BC24-F7409C91026E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
