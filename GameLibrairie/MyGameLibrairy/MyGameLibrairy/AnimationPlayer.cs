@@ -15,157 +15,106 @@ namespace MyGameLibrairy
         public float m_Rotation;
         public int m_FrameIndex;
         public Animation m_Animation;
+
         private float m_Timer;
+        private Rectangle m_CurrentFrame;
+        private Rectangle m_CurrentResizedFrame;
 
         public Vector2 Origin
         {
             get { return new Vector2(m_Animation.m_FrameWidth / 2, m_Animation.m_FrameHeight); }
         }
 
-        public void PlayAnimation(Animation newAnimation)
+        public void PlayAnimation(Animation aAnimation)
         {
-            if (m_Animation == newAnimation)
+            if (m_Animation == aAnimation)
                 return;
 
-            m_Animation = newAnimation;
+            m_Animation = aAnimation;
             m_FrameIndex = 0;
             m_Timer = 0;
         }
 
-        public void Draw(GameTime gametime, SpriteBatch g, Vector2 Position, SpriteEffects spriteEffet)
+        public void ComputeFrameInformation(GameTime aGametime, SpriteBatch aSpritebatch, Vector2 aPosition)
         {
-            if (m_Animation == null)
-            {
-                //throw new NotSupportedException("Yo,is no animation selected");
-            }
-            else
-            {
-                m_Timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (m_Timer >= m_Animation.m_FrameTime)
-                {
-                    m_Timer -= m_Animation.m_FrameTime;
-                    if (m_Animation.m_IsLooping)
-                        try
-                        {
-                            m_FrameIndex = (m_FrameIndex + 1) % m_Animation.m_FrameCount;
-                        }
-                        catch
-                        {
-                            m_FrameIndex = 0;
-                        }
-                    else m_FrameIndex = Math.Min(m_FrameIndex + 1, m_Animation.m_FrameCount - 1);
-                }
-
-                Rectangle Rectangle = new Rectangle(m_FrameIndex * m_Animation.m_FrameWidth,
-                                                 0, m_Animation.m_FrameWidth, m_Animation.m_FrameHeight);
-
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(m_Animation.m_FrameWidth * m_Animation.m_Resize),
+            GetCurrentFrame(aGametime);
+            m_CurrentResizedFrame = new Rectangle(
+                (int)aPosition.X,
+                (int)aPosition.Y,
+                (int)(m_Animation.m_FrameWidth * m_Animation.m_Resize),
                 (int)(m_Animation.m_FrameHeight * m_Animation.m_Resize));
-
-                // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
-                g.Draw(m_Animation.m_Texture, RecResize, Rectangle, Color.White, m_Rotation, Origin, spriteEffet, 0);
-            }
         }
 
-        public void Draw(GameTime gametime, SpriteBatch g, Vector2 Position, SpriteEffects spriteEffet,Color Couleur)
+        public void ComputeFrameInformation(GameTime aGametime, SpriteBatch aSpritebatch, Rectangle aRectangle)
         {
-            if (m_Animation == null)
-            {
-                //throw new NotSupportedException("Yo,is no animation selected");
-            }
-            else
-            {
-                m_Timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (m_Timer >= m_Animation.m_FrameTime)
-                {
-                    m_Timer -= m_Animation.m_FrameTime;
-                    if (m_Animation.m_IsLooping)
-                        try
-                        {
-                            m_FrameIndex = (m_FrameIndex + 1) % m_Animation.m_FrameCount;
-                        }
-                        catch
-                        {
-                            m_FrameIndex = 0;
-                        }
-                    else m_FrameIndex = Math.Min(m_FrameIndex + 1, m_Animation.m_FrameCount - 1);
-                }
-
-                Rectangle Rectangle = new Rectangle(m_FrameIndex * m_Animation.m_FrameWidth,
-                                                 0, m_Animation.m_FrameWidth, m_Animation.m_FrameHeight);
-
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(m_Animation.m_FrameWidth * m_Animation.m_Resize),
-                (int)(m_Animation.m_FrameHeight * m_Animation.m_Resize));
-
-                // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
-                g.Draw(m_Animation.m_Texture, RecResize, Rectangle, Couleur, m_Rotation, Origin, spriteEffet, 0);
-            }
+            GetCurrentFrame(aGametime);
+            m_CurrentResizedFrame = new Rectangle(
+                aRectangle.X,
+                aRectangle.Y,
+                (int)m_Animation.m_FrameWidth * (aRectangle.Height / m_Animation.m_FrameWidth),
+                (int)m_Animation.m_FrameWidth * (aRectangle.Height / m_Animation.m_FrameWidth));
         }
-        public void Draw(GameTime gametime, SpriteBatch g, Rectangle RecPosition, SpriteEffects spriteEffet)
+
+        private void GetCurrentFrame(GameTime aGametime)
         {
-            if (m_Animation == null)
+            m_Timer += (float)aGametime.ElapsedGameTime.TotalSeconds;
+            while (m_Timer >= m_Animation.m_FrameTime)
             {
-              // throw new NotSupportedException("Yo,is no animation selected");
+                m_Timer -= m_Animation.m_FrameTime;
+                if (m_Animation.m_IsLooping)
+                    try
+                    {
+                        m_FrameIndex = (m_FrameIndex + 1) % m_Animation.m_FrameCount;
+                    }
+                    catch
+                    {
+                        m_FrameIndex = 0;
+                    }
+                else m_FrameIndex = Math.Min(m_FrameIndex + 1, m_Animation.m_FrameCount - 1);
             }
-            else
-            {
-                m_Timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (m_Timer >= m_Animation.m_FrameTime)
-                {
-                    m_Timer -= m_Animation.m_FrameTime;
-                    if (m_Animation.m_IsLooping)
-                        try
-                        {
-                            m_FrameIndex = (m_FrameIndex + 1) % m_Animation.m_FrameCount;
-                        }
-                        catch
-                        {
-                            m_FrameIndex = 0;
-                        }
-                    else m_FrameIndex = Math.Min(m_FrameIndex + 1, m_Animation.m_FrameCount - 1);
-                }
 
-                Rectangle Rectangle = new Rectangle(m_FrameIndex * m_Animation.m_FrameWidth,
-                                                 0, m_Animation.m_FrameWidth, m_Animation.m_FrameHeight);
-
-                Rectangle RecResize = new Rectangle(RecPosition.X, RecPosition.Y, (int)m_Animation.m_FrameWidth * (RecPosition.Height / m_Animation.m_FrameWidth), (int)m_Animation.m_FrameWidth * (RecPosition.Height / m_Animation.m_FrameWidth));
-                g.Draw(m_Animation.m_Texture, RecResize, Rectangle, Color.White, m_Rotation, Origin, spriteEffet, 0);
-            }
+            m_CurrentFrame = new Rectangle(
+                m_FrameIndex * m_Animation.m_FrameWidth,
+                0,
+                m_Animation.m_FrameWidth,
+                m_Animation.m_FrameHeight);
         }
 
-        public void Draw(GameTime gametime, SpriteBatch g, Vector2 Position, SpriteEffects spriteEffet,float Rotation)
+        public void Draw(GameTime aGametime, SpriteBatch aSpritebatch, Vector2 aPosition, SpriteEffects aSpriteEffet)
         {
-            if (m_Animation == null)
+            if (m_Animation != null)
             {
-                //throw new NotSupportedException("Yo,is no animation selected");
-            }
-            else
-            {
-                m_Timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (m_Timer >= m_Animation.m_FrameTime)
-                {
-                    m_Timer -= m_Animation.m_FrameTime;
-                    if (m_Animation.m_IsLooping)
-                        try
-                        {
-                            m_FrameIndex = (m_FrameIndex + 1) % m_Animation.m_FrameCount;
-                        }
-                        catch
-                        {
-                            m_FrameIndex = 0;
-                        }
-                    else m_FrameIndex = Math.Min(m_FrameIndex + 1, m_Animation.m_FrameCount - 1);
-                }
-
-                Rectangle Rectangle = new Rectangle(m_FrameIndex * m_Animation.m_FrameWidth,
-                                                 0, m_Animation.m_FrameWidth, m_Animation.m_FrameHeight);
-
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(m_Animation.m_FrameWidth * m_Animation.m_Resize),
-                (int)(m_Animation.m_FrameHeight * m_Animation.m_Resize));
-
-                g.Draw(m_Animation.m_Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
+                ComputeFrameInformation(aGametime, aSpritebatch, aPosition);
+                aSpritebatch.Draw(m_Animation.m_Texture, m_CurrentResizedFrame, m_CurrentFrame, Color.White, m_Rotation, Origin, aSpriteEffet, 0);
             }
         }
+
+        public void Draw(GameTime aGametime, SpriteBatch aSpriteBatch, Vector2 aPosition, SpriteEffects aSpriteEffet, Color aColor)
+        {
+            if (m_Animation != null)
+            {
+                ComputeFrameInformation(aGametime, aSpriteBatch, aPosition);
+                aSpriteBatch.Draw(m_Animation.m_Texture, m_CurrentResizedFrame, m_CurrentFrame, aColor, m_Rotation, Origin, aSpriteEffet, 0);
+            }
+        }
+
+        public void Draw(GameTime aGametime, SpriteBatch aSpriteBatch, Vector2 aPosition, SpriteEffects aSpriteEffet, float aRotation)
+        {
+            if (m_Animation != null)
+            {
+                ComputeFrameInformation(aGametime, aSpriteBatch, aPosition);
+                aSpriteBatch.Draw(m_Animation.m_Texture, m_CurrentResizedFrame, m_CurrentFrame, Color.White, aRotation, Origin, aSpriteEffet, 0);
+            }
+        }
+
+        public void Draw(GameTime aGametime, SpriteBatch aSpritebatch, Rectangle aRecPosition, SpriteEffects aSpriteEffet)
+        {
+            if (m_Animation != null)
+            {
+                ComputeFrameInformation(aGametime, aSpritebatch, aRecPosition);
+                aSpritebatch.Draw(m_Animation.m_Texture, m_CurrentResizedFrame, m_CurrentFrame, Color.White, m_Rotation, Origin, aSpriteEffet, 0);
+            }
         }
     }
+}
 
