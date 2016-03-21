@@ -8,7 +8,6 @@ namespace MyGameLibrairy
 {
      public static class RectangleHelper
     {
-        #region First RectangleHelper
         const int PenetrationMargin = 13;
         public static bool isOnTopOf(this Rectangle r1, Rectangle r2)
         {
@@ -41,8 +40,5 @@ namespace MyGameLibrairy
               r1.Right >= r2.Left - 1 &&
               r1.Right <= r2.Left + PenetrationMargin);
         }
-        #endregion
-
-      
     }
 }
