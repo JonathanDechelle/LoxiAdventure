@@ -32,7 +32,7 @@ namespace MyGameLibrairy
        
         public Vector2 Origin
         {
-            get { return new Vector2(animation.FrameWidth / 2, animation.FrameHeight); }
+            get { return new Vector2(animation.m_FrameWidth / 2, animation.m_FrameHeight); }
         }
 
         public void PlayAnimation(Animation newAnimation)
@@ -54,29 +54,29 @@ namespace MyGameLibrairy
             else
             {
                 timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (timer >= animation.FrameTimer)
+                while (timer >= animation.m_FrameTime)
                 {
-                    timer -= animation.FrameTimer;
-                    if (animation.IsLooping)
+                    timer -= animation.m_FrameTime;
+                    if (animation.m_IsLooping)
                         try
                         {
-                            frameIndex = (frameIndex + 1) % animation.FrameCount;
+                            frameIndex = (frameIndex + 1) % animation.m_FrameCount;
                         }
                         catch
                         {
                             frameIndex = 0;
                         }
-                    else frameIndex = Math.Min(frameIndex + 1, animation.FrameCount - 1);
+                    else frameIndex = Math.Min(frameIndex + 1, animation.m_FrameCount - 1);
                 }
 
-                Rectangle Rectangle = new Rectangle(frameIndex * Animation.FrameWidth,
-                                                 0, Animation.FrameWidth, Animation.FrameHeight);
+                Rectangle Rectangle = new Rectangle(frameIndex * Animation.m_FrameWidth,
+                                                 0, Animation.m_FrameWidth, Animation.m_FrameHeight);
 
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.FrameWidth * Animation.Resize),
-                (int)(Animation.FrameHeight * Animation.Resize));
+                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.m_FrameWidth * Animation.m_Resize),
+                (int)(Animation.m_FrameHeight * Animation.m_Resize));
 
                 // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
-                g.Draw(Animation.Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
+                g.Draw(Animation.m_Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
             }
         }
 
@@ -89,29 +89,29 @@ namespace MyGameLibrairy
             else
             {
                 timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (timer >= animation.FrameTimer)
+                while (timer >= animation.m_FrameTime)
                 {
-                    timer -= animation.FrameTimer;
-                    if (animation.IsLooping)
+                    timer -= animation.m_FrameTime;
+                    if (animation.m_IsLooping)
                         try
                         {
-                            frameIndex = (frameIndex + 1) % animation.FrameCount;
+                            frameIndex = (frameIndex + 1) % animation.m_FrameCount;
                         }
                         catch
                         {
                             frameIndex = 0;
                         }
-                    else frameIndex = Math.Min(frameIndex + 1, animation.FrameCount - 1);
+                    else frameIndex = Math.Min(frameIndex + 1, animation.m_FrameCount - 1);
                 }
 
-                Rectangle Rectangle = new Rectangle(frameIndex * Animation.FrameWidth,
-                                                 0, Animation.FrameWidth, Animation.FrameHeight);
+                Rectangle Rectangle = new Rectangle(frameIndex * Animation.m_FrameWidth,
+                                                 0, Animation.m_FrameWidth, Animation.m_FrameHeight);
 
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.FrameWidth * Animation.Resize),
-                (int)(Animation.FrameHeight * Animation.Resize));
+                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.m_FrameWidth * Animation.m_Resize),
+                (int)(Animation.m_FrameHeight * Animation.m_Resize));
 
                 // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
-                g.Draw(Animation.Texture, RecResize, Rectangle, Couleur, Rotation, Origin, spriteEffet, 0);
+                g.Draw(Animation.m_Texture, RecResize, Rectangle, Couleur, Rotation, Origin, spriteEffet, 0);
             }
         }
         public void Draw(GameTime gametime, SpriteBatch g, Rectangle RecPosition, SpriteEffects spriteEffet)
@@ -123,32 +123,32 @@ namespace MyGameLibrairy
             else
             {
                 timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (timer >= animation.FrameTimer)
+                while (timer >= animation.m_FrameTime)
                 {
-                    timer -= animation.FrameTimer;
-                    if (animation.IsLooping)
+                    timer -= animation.m_FrameTime;
+                    if (animation.m_IsLooping)
                         try
                         {
-                            frameIndex = (frameIndex + 1) % animation.FrameCount;
+                            frameIndex = (frameIndex + 1) % animation.m_FrameCount;
                         }
                         catch
                         {
                             frameIndex = 0;
                         }
-                    else frameIndex = Math.Min(frameIndex + 1, animation.FrameCount - 1);
+                    else frameIndex = Math.Min(frameIndex + 1, animation.m_FrameCount - 1);
                 }
 
-                Rectangle Rectangle = new Rectangle(frameIndex * Animation.FrameWidth,
-                                                 0, Animation.FrameWidth, Animation.FrameHeight);
+                Rectangle Rectangle = new Rectangle(frameIndex * Animation.m_FrameWidth,
+                                                 0, Animation.m_FrameWidth, Animation.m_FrameHeight);
 
-                Rectangle RecResize = new Rectangle(RecPosition.X, RecPosition.Y, (int)animation.FrameWidth * (RecPosition.Height / animation.FrameWidth), (int)animation.FrameWidth * (RecPosition.Height / animation.FrameWidth));//new Rectangle((int)Position.X, (int)Position.Y, Animation.FrameWidth * (int)Animation.Resize,
+                Rectangle RecResize = new Rectangle(RecPosition.X, RecPosition.Y, (int)animation.m_FrameWidth * (RecPosition.Height / animation.m_FrameWidth), (int)animation.m_FrameWidth * (RecPosition.Height / animation.m_FrameWidth));//new Rectangle((int)Position.X, (int)Position.Y, Animation.FrameWidth * (int)Animation.Resize,
                 //Animation.FrameHeight * (int)Animation.Resize);
 
                 // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
                 //g.Draw(Animation.Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
 
                 ///Seulement pour sonic
-                g.Draw(Animation.Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
+                g.Draw(Animation.m_Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
             }
         }
 
@@ -161,29 +161,29 @@ namespace MyGameLibrairy
             else
             {
                 timer += (float)gametime.ElapsedGameTime.TotalSeconds;
-                while (timer >= animation.FrameTimer)
+                while (timer >= animation.m_FrameTime)
                 {
-                    timer -= animation.FrameTimer;
-                    if (animation.IsLooping)
+                    timer -= animation.m_FrameTime;
+                    if (animation.m_IsLooping)
                         try
                         {
-                            frameIndex = (frameIndex + 1) % animation.FrameCount;
+                            frameIndex = (frameIndex + 1) % animation.m_FrameCount;
                         }
                         catch
                         {
                             frameIndex = 0;
                         }
-                    else frameIndex = Math.Min(frameIndex + 1, animation.FrameCount - 1);
+                    else frameIndex = Math.Min(frameIndex + 1, animation.m_FrameCount - 1);
                 }
 
-                Rectangle Rectangle = new Rectangle(frameIndex * Animation.FrameWidth,
-                                                 0, Animation.FrameWidth, Animation.FrameHeight);
+                Rectangle Rectangle = new Rectangle(frameIndex * Animation.m_FrameWidth,
+                                                 0, Animation.m_FrameWidth, Animation.m_FrameHeight);
 
-                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.FrameWidth * Animation.Resize),
-                (int)(Animation.FrameHeight * Animation.Resize));
+                Rectangle RecResize = new Rectangle((int)Position.X, (int)Position.Y, (int)(Animation.m_FrameWidth * Animation.m_Resize),
+                (int)(Animation.m_FrameHeight * Animation.m_Resize));
 
                 // g.Draw(Animation.Texture,RecResize,Rectangle,Color.White,0,Origin,1,spriteEffet,0);
-                g.Draw(Animation.Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
+                g.Draw(Animation.m_Texture, RecResize, Rectangle, Color.White, Rotation, Origin, spriteEffet, 0);
             }
         }
         }

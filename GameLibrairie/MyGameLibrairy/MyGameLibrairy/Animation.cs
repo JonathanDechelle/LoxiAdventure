@@ -12,50 +12,22 @@ namespace MyGameLibrairy
     /// </summary>
     public class Animation
     {
-        Texture2D texture;
+        public Texture2D m_Texture;
+        public int m_FrameWidth;
+        public int m_FrameHeight;
+        public int m_FrameCount;
+        public float m_FrameTime;
+        public float m_Resize;
+        public bool m_IsLooping;
 
-        public Texture2D Texture
+        public Animation(Texture2D Texture, int FrameWidth, float FrameTime, float Resize, bool IsLooping)
         {
-            get { return texture; }
+            this.m_Texture = Texture;
+            this.m_FrameWidth = FrameWidth;
+            this.m_FrameTime = FrameTime;
+            this.m_Resize = Resize;
+            this.m_IsLooping = IsLooping;
+            this.m_FrameCount = Texture.Width / this.m_FrameWidth;
         }
-
-        public int FrameWidth;
-        
-        
-        public float Resize;
-
-        public int FrameHeight
-        {
-            get
-            {
-                return texture.Height;
-            }
- 
-        }
-        float frameTime;
-        public float FrameTimer
-        {
-            get { return frameTime; }
-            set { frameTime = value; }
-        }
-
-        public int FrameCount;
-
-        bool isLooping;
-        public bool IsLooping
-        {
-            get { return isLooping; }
-        }
-
-        public Animation(Texture2D Texture, int FrameWidth, float FrameTime,float Resize, bool IsLooping)
-        {
-            this.texture = Texture;
-            this.FrameWidth = FrameWidth;
-            this.frameTime = FrameTime;
-            this.Resize = Resize;
-            this.isLooping = IsLooping;
-            this.FrameCount = Texture.Width / this.FrameWidth;
-        }
-
-        }
+    }
 }

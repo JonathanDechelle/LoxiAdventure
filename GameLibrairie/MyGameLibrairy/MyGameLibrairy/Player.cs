@@ -150,10 +150,10 @@ namespace MyGameLibrairy
                         if (KeyboardHelper.KeyHold(Keys.LeftShift))
                         {
                             Speed.X -= 2;
-                            WalkigNormal.FrameTimer = CourseFrameTimer;
+                            WalkigNormal.m_FrameTime = CourseFrameTimer;
                         }
                         else
-                        WalkigNormal.FrameTimer = WalkingFrameTimer;
+                        WalkigNormal.m_FrameTime = WalkingFrameTimer;
 
                         flip = SpriteEffects.FlipHorizontally;
                     }
@@ -183,10 +183,10 @@ namespace MyGameLibrairy
                         if (KeyboardHelper.KeyHold(Keys.LeftShift))
                         {
                             Speed.X += 2;
-                            WalkigNormal.FrameTimer = CourseFrameTimer;
+                            WalkigNormal.m_FrameTime = CourseFrameTimer;
                         }
                         else
-                            WalkigNormal.FrameTimer = WalkingFrameTimer;
+                            WalkigNormal.m_FrameTime = WalkingFrameTimer;
                         flip = SpriteEffects.None;
                     }
                     else
