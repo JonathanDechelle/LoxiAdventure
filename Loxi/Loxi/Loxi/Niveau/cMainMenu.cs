@@ -50,10 +50,10 @@ namespace Loxi
             switch (CurrentGameState)
             {
                 case GameState.MainMenu:
-                    if (btnPlay.IsCliked)
+                    if (btnPlay.m_IsClicked)
                         CurrentGameState = GameState.Playing;
 
-                    if (btnExplication.IsCliked)
+                    if (btnExplication.m_IsClicked)
                         CurrentGameState = GameState.Option;
                     
 

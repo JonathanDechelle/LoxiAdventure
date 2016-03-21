@@ -293,7 +293,7 @@ namespace Loxi
             #region CheckBalle/UpdateMechantVie
                 foreach (Bullets bullet in Joueur.bullets)
                 { 
-                    if (bullet.Rectangle.Intersects(Ennemi.Rectangle))
+                    if (bullet.m_Rectangle.Intersects(Ennemi.Rectangle))
                         MechantVie.Update(true,1);
                     else
                         MechantVie.Update(false,1);

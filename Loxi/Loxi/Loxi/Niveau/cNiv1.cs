@@ -61,8 +61,8 @@ namespace Loxi
             pausedrectangle = new Rectangle(0, 0, pausedTexture.Width, pausedTexture.Height);
             btnPlay = new Button(RessourcesLoxi.MainMenuButton,new Vector2(570,125),3);
             btnQuit = new Button(RessourcesLoxi.MainMenuButton, new Vector2(570, 300),3);
-            EcartbtnPlay = btnPlay.Position;
-            EcartbtnQuit = btnQuit.Position;
+            EcartbtnPlay = btnPlay.m_Position;
+            EcartbtnQuit = btnQuit.m_Position;
         }
 
         float spawn = 0;
@@ -86,7 +86,7 @@ namespace Loxi
                 if (KeyboardHelper.KeyPressed(Keys.Enter))
                 {
                     Paused = true;
-                    btnPlay.IsCliked = false;
+                    btnPlay.m_IsClicked = false;
                 }
 
                 EnnemiePatrol.Update(Player,Obstacles);
@@ -118,14 +118,14 @@ namespace Loxi
                 if (KeyboardHelper.KeyPressed(Keys.Enter))
                 {
                     Paused = false;
-                    btnPlay.IsCliked = true;
+                    btnPlay.m_IsClicked = true;
                 }
 
-                if (btnPlay.IsCliked)
+                if (btnPlay.m_IsClicked)
                 {
                     Paused = false;
                 }
-                if (btnQuit.IsCliked)
+                if (btnQuit.m_IsClicked)
                     RemoveScreen(this);
                 
                 btnPlay.Update(mouse);
