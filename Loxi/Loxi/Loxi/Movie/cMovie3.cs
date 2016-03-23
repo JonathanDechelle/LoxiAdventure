@@ -18,10 +18,6 @@ namespace Loxi
         #region Animation
         AnimationPlayer AnimationPlayer=new AnimationPlayer();
         AnimationPlayer AP2 = new AnimationPlayer();
-        Animation SorsDefausse1 = new Animation(RessourcesLoxi.SorsDeFosse1, 100, 0.18f, 2, false),
-                  SorsDefausse2 = new Animation(RessourcesLoxi.SorsDeFosse2, 100, 0.18f, 2, false),
-                  TransfoNinja = new Animation(RessourcesLoxi.Transformation, 101, 0.15f, 2, false);
-                  
         Vector2 PosAnim = new Vector2(100, 480);
         #endregion
         #region Blabla
@@ -72,7 +68,7 @@ namespace Loxi
                 if (AnimationPlayer.m_FrameIndex == 18)//si fin d'animation de tranfo
                     TransfoNinjaComplete = true;
                 else
-                    AnimationPlayer.PlayAnimation(TransfoNinja);
+                    AnimationPlayer.PlayAnimation(RessourcesLoxi.TransfoNinja);
 
                 if (TransfoNinjaComplete)
                 {
@@ -84,9 +80,9 @@ namespace Loxi
                     }
 
                     if (!WarioSexplique)
-                        AP2.PlayAnimation(AllAnimationLoxi.WarioSurpris);
+                        AP2.PlayAnimation(RessourcesLoxi.WarioSurprisAnimation);
                     else
-                        AP2.PlayAnimation(AllAnimationLoxi.WarioExplique);
+                        AP2.PlayAnimation(RessourcesLoxi.WarioExpliqueAnimation);
 
                     if (NumParole == 2)
                     {
@@ -159,9 +155,9 @@ namespace Loxi
                 }
             }
             else if (!SorsDeFaussePart2)
-                AnimationPlayer.PlayAnimation(SorsDefausse1);
+                AnimationPlayer.PlayAnimation(RessourcesLoxi.SorsDefausse1);
             else
-                AnimationPlayer.PlayAnimation(SorsDefausse2);
+                AnimationPlayer.PlayAnimation(RessourcesLoxi.SorsDefausse2);
 
            
         }

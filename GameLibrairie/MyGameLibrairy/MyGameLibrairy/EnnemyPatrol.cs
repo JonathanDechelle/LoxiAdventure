@@ -37,7 +37,7 @@ namespace MyGameLibrairy
         }
 
         float playerDistanceX,playerDistanceY;
-        public void Update(Player Joueur,List<ObjCollisionable>Obstacles)
+        /*public void Update(Player Joueur,List<ObjCollisionable>Obstacles)
         {
             Position += Speed;
             Rectangle.X = (int)Position.X-45;
@@ -100,7 +100,7 @@ namespace MyGameLibrairy
                      DiscoverYou = false;
               
             }
-        }
+        }*/
             public void Draw(SpriteBatch g)
             {
                 if (Speed.X > 0)

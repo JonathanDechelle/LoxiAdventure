@@ -7,64 +7,66 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using MyGameLibrairy;
 
-namespace MyGameLibrairy
+namespace Loxi
 {
     /// <summary>
     /// classe associer au stockage de toutes les images
     /// </summary>
-    public class RessourcesLoxi
+    public static class RessourcesLoxi
     {
-        //Variable d'image static 
-        public static Texture2D Test, Niv1Plage,PageTitre,BambooForest,TestPatrouille,BackgroundEtoile;
+        #region Texture2D
+        //Variable d'image  
+        public static Texture2D Test, Niv1Plage, PageTitre, BambooForest, TestPatrouille, BackgroundEtoile;
 
         //Action Loxi
         public static Texture2D WalkLoxi, JumpLoxi, JumpForwardLoxi, NothingLoxi, Transformation, Hula,
-                                SorsDeFosse1, SorsDeFosse2, Hula2,SuperCombo1,SuperCombo2;
+                                SorsDeFosse1, SorsDeFosse2, Hula2, SuperCombo1, SuperCombo2;
 
         //Action Donald
         public static Texture2D NothingDonald, WalkingDonald, JumpDonald, JumpForwardDonald, Shoot, ShootUpward;
 
         //Action raphael,michelangelo,donatello,leonard0
-        public static Texture2D WalkingRaph, RaphAttack, WalkingMich, MichAttack,WalkingDonatello,DonAttack,LeoWalking,LeoAttack,
-                                AfterFightRaph,AfterFightMich,AfterFightDon,AfterFightLeo,MichAttack2,DonAttack2,RaphAttack2,LeoAttack2;
-                           
+        public static Texture2D WalkingRaph, RaphAttack, WalkingMich, MichAttack, WalkingDonatello, DonAttack, LeoWalking, LeoAttack,
+                                AfterFightRaph, AfterFightMich, AfterFightDon, AfterFightLeo, MichAttack2, DonAttack2, RaphAttack2, LeoAttack2;
+
         //Daffy duck
-        public static Texture2D DaffiDuck,DaffiExitLevel;
+        public static Texture2D DaffiDuck, DaffiExitLevel;
 
         //Bouton
-        public static Texture2D MainMenuButton,ExplicationMainButton;
+        public static Texture2D MainMenuButton, ExplicationMainButton;
 
         //Pause 
         public static Texture2D PausedMenu;
 
-        //HelatBar
-        public static Texture2D HealtBar,HealtBarCombat;
+        //HealthBar
+        public static Texture2D HealtBar, HealtBarCombat;
 
         //Sprite Texte
-        public static SpriteFont Texte,Texte2;
+        public static SpriteFont Texte, Texte2;
 
         //Pluie-ParticleGenerator
         public static Texture2D Rain;
 
         //Musique et sons
-        public static Song SongImageTitre, SongCinematique1,SongNiv1,SongCinematique2,SongNiv2,SongCinematique3,Rasputin,FinalSong;
-        public static SoundEffect JumpEffect,ShootEffect;
+        public static Song SongImageTitre, SongCinematique1, SongNiv1, SongCinematique2, SongNiv2, SongCinematique3, Rasputin, FinalSong;
+        public static SoundEffect JumpEffect, ShootEffect;
 
         //Balle
         public static Texture2D BalleJoueur;
 
         //Niveau Complexe Scientifique
-        public static Texture2D BunkerUpperView, BunkerRightSide, BunkerLeftSide,Fleche,Cercle,Donald,
-                                RifleSoldierCheck,RifleSoldierPatrouille,BulleParole,FouAnime,DragInNiv2,Machine,Machine2;
+        public static Texture2D BunkerUpperView, BunkerRightSide, BunkerLeftSide, Fleche, Cercle, Donald,
+                                RifleSoldierCheck, RifleSoldierPatrouille, BulleParole, FouAnime, DragInNiv2, Machine, Machine2;
 
         //Niveau CombatTortueNinja
-        public static Texture2D PresentCombatWarrior,PresentRaph,PresentLeonardo,PresentDonatello,
-                                PresentMichelangelo,SplinterSingle,Perchoir,grotte,grotte2,grotte3,grotte4,grotte5,
+        public static Texture2D PresentCombatWarrior, PresentRaph, PresentLeonardo, PresentDonatello,
+                                PresentMichelangelo, SplinterSingle, Perchoir, grotte, grotte2, grotte3, grotte4, grotte5,
                                 DanseTransfo;
         //Wario 
-        public static Texture2D WarioNormal, WarioSurpris, WarioExplique,WarioExplosion;
-        //Load Content
+        public static Texture2D WarioNormal, WarioSurpris, WarioExplique, WarioExplosion;
+
         public static void LoadContent(ContentManager Content)
         {
             FinalSong = Content.Load<Song>("SkrillexOrchestral");
@@ -158,13 +160,71 @@ namespace MyGameLibrairy
             PausedMenu = Content.Load<Texture2D>("Donald_Original_Outfit");
             ExplicationMainButton = Content.Load<Texture2D>("btnExplication");
         }
-       
+        #endregion
 
-        ///NOTE PERSO
-        ///Spriters.ressources.com pour les personnage
-        /// 
-        ///Lécran fait
-        /// 450X770
-       
+        #region Animations
+        #region DonaldAnimation
+        public static Animation DonaldNothingAnimation = new Animation(NothingDonald, 90, 1.5f, 2, true);
+        public static Animation DonaldWalkingAnimation = new Animation(WalkingDonald, 90, 0.1f, 2, true);
+        public static Animation DonaldJumpAnimation = new Animation(JumpDonald, 100, 0.2f, 2, true);
+        public static Animation DonaldJumpForwardAnimation = new Animation(JumpForwardDonald, 90, 0.2f, 2, true);
+        public static Animation DonaldShootAnimation = new Animation(Shoot, 90, 0.1f, 2, false);
+        public static Animation DonaldShootUpwardAnimation = new Animation(ShootUpward, 100, 0.1f, 2, false);
+        public static Animation SorsDefausse1 = new Animation(SorsDeFosse1, 100, 0.18f, 2, false);
+        public static Animation SorsDefausse2 = new Animation(SorsDeFosse2, 100, 0.18f, 2, false);
+        public static Animation TransfoNinja = new Animation(Transformation, 101, 0.15f, 2, false);
+        #endregion
+
+        #region LoxiAnimation
+        public static Animation LoxiwalkAnimation = new Animation(WalkLoxi, 90, 0.1f, 2, true);
+        public static Animation LoxiJumpAnimation = new Animation(JumpLoxi, 100, 0.1f, 2, true);
+        public static Animation LoxiNothingAnimation = new Animation(NothingLoxi, 80, 0.25f, 2, true);
+        public static Animation TransformationAnimation = new Animation(Transformation, 101, 0.15f, 2, true);
+        public static Animation LoxiJumpForwardAnimation = new Animation(JumpForwardLoxi, 85, 0.2f, 2, true);
+        public static Animation HulaAnimation = new Animation(Hula, 100, 0.1f, 2, false);
+        public static Animation Hula2Animation = new Animation(Hula2, 110, 0.1f, 2, false);
+        public static Animation SuperComboPart1 = new Animation(SuperCombo1, 180, 0.5f, 2, false);
+        public static Animation SuperComboPart2 = new Animation(SuperCombo2, 180, 0.5f, 2, false);
+        #endregion
+
+        #region Wario Animation
+        public static Animation WarioSurprisAnimation = new Animation(WarioSurpris, 60, 0.5f, 2, true);
+        public static Animation WarioExpliqueAnimation = new Animation(WarioExplique, 60, 0.5f, 2, true);
+        public static Animation WarioExploseAnimation = new Animation(WarioExplosion, 60, 1, 2, false);
+        #endregion
+
+        #region Splinter Animation
+        public static Animation DanseTransformation = new Animation(DanseTransfo, 80, 0.9f, 2, true);
+        public static Animation NothingSplinter = new Animation(SplinterSingle, 80, 0.1f, 2, true);
+        #endregion
+
+        #region Raphael Animation
+        public static Animation WalkingRaphAnimation = new Animation(WalkingRaph, 80, 0.5f, 2, true);
+        public static Animation RaphAttackAnimation = new Animation(RaphAttack, 90, 0.3f, 2, true);
+        public static Animation RaphAttenteAnimation = new Animation(AfterFightRaph, 80, 0.5f, 2, true);
+        public static Animation RaphAttack2Animation = new Animation(RaphAttack2, 110, 0.5f, 2, false);
+        #endregion
+
+        #region Michelangelo Animation
+        public static Animation WalkingMichAnimation = new Animation(WalkingMich, 80, 0.5f, 2, true);
+        public static Animation MichAttackAnimation = new Animation(MichAttack, 100, 0.3f, 2, true);
+        public static Animation MichAttenteAnimation = new Animation(AfterFightMich, 80, 0.5f, 2, true);
+        public static Animation MichAttack2Animation = new Animation(MichAttack2, 120, 0.5f, 2, false);
+        #endregion
+
+        #region Donatello Animation
+        public static Animation WalkingDonAnimation = new Animation(WalkingDonatello, 80, 0.5f, 2, true);
+        public static Animation DonAttackAnimation = new Animation(DonAttack, 105, 0.3f, 2, true);
+        public static Animation DonAttenteAnimation = new Animation(AfterFightDon, 80, 0.5f, 2, true);
+        public static Animation DonAttack2Animation = new Animation(DonAttack2, 110, 0.5f, 2, false);
+        #endregion
+
+        #region Leonardo Animation
+        public static Animation WalkingLeoAnimation = new Animation(LeoWalking, 80, 0.5f, 2, true);
+        public static Animation LeoAttackAnimation = new Animation(LeoAttack, 100, 0.3f, 2, true);
+        public static Animation LeoAttenteAnimation = new Animation(AfterFightLeo, 80, 0.5f, 2, true);
+        public static Animation LeoAttack2Animation = new Animation(LeoAttack2, 110, 0.5f, 2, false);
+        #endregion
+        #endregion
     }
 }

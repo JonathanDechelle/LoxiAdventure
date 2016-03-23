@@ -11,7 +11,7 @@ namespace MyGameLibrairy
     /// <summary>
     /// Inititialise un Ennemi en style de combat (Ex.Mortal Kombat)
     /// </summary>
-    public class CombatIA:RessourcesLoxi
+    public class CombatIA
     {
         public Vector2 Position;
         public Vector2 Speed;
@@ -38,7 +38,7 @@ namespace MyGameLibrairy
             this.AttackAnimation = AttackAnimation;
         }
 
-        public void Update(GameTime gametime, Player Joueur)
+        /*public void Update(GameTime gametime, Player Joueur)
         {
             Mouvement = random.Next(1, 100);
             Position += Speed;
@@ -91,7 +91,7 @@ namespace MyGameLibrairy
 
                 #endregion
             }
-        }
+        }*/
 
         public void Draw(SpriteBatch g,GameTime gametime)
         {

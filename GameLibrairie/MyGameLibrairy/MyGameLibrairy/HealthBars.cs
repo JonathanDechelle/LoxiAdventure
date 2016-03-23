@@ -14,49 +14,49 @@ namespace MyGameLibrairy
     /// </summary>
     public class HealthBars
     {
-        Texture2D Texture;
-        Vector2 Position;
-        Rectangle Rectangle;
-        Player Joueur;
-        bool Centrer,barEnnemy;
-        String TexteDeMort;
-        Color CouleurTMort;
-        public bool GameOver;
+        public bool m_GameOver;
 
-        public HealthBars(Texture2D Texture,Vector2 Position,bool Centrer,Player Joueur,bool Ennemybar)
+        private Texture2D m_Texture;
+        private Vector2 m_Position;
+        private Vector2 m_OffsetPosition;
+        private Rectangle m_Rectangle;
+        
+        /*private String m_DeadText;
+        private Color m_DeadColor;*/
+
+        public HealthBars(Texture2D aTexture, Vector2 aOffsetPosition)
         {
-            this.Texture = Texture;
-            this.Position = Position;
-            this.Centrer = Centrer;
-            this.Joueur = Joueur;
-            Rectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
-            barEnnemy = Ennemybar;
-            if (barEnnemy) { TexteDeMort = "Win"; CouleurTMort = Color.Green; } else { TexteDeMort = "Game Over"; CouleurTMort = Color.Red; }
-            GameOver = false;
+            m_Texture = aTexture;
+            m_Rectangle = new Rectangle(0, 0, aTexture.Width, aTexture.Height);
+            m_OffsetPosition = aOffsetPosition;
+            m_GameOver = false;
+
+            //if (barEnnemy) { m_DeadText = "Win"; m_DeadColor = Color.Green; } else { m_DeadText = "Game Over"; m_DeadColor = Color.Red; }
         }
 
-        public void Update(bool Detection,int Force)
+        public void Update(Vector2 aPlayerPosition)
         {
-            if (Centrer)
-            {
-                Position.X = Joueur.Position.X - 260;
-                Position.Y = Joueur.Position.Y - 220;
-            }
+            m_Position = aPlayerPosition + m_OffsetPosition;
 
-            //if (KeyboardHelper.KeyHold(Keys.P))
-            if(Detection)
-                Rectangle.Width -= Force;
+           if (m_Rectangle.Width <= 0)
+           {
+               m_GameOver = true;
+           }
+        }
 
-            if (Rectangle.Width <= 0)
-                GameOver = true;
+        public void ApplyDamage(int aDamage)
+        {
+            m_Rectangle.Width -= aDamage;
         }
 
         public void Draw(SpriteBatch g)
         {
-            g.Draw(Texture, Position, Rectangle, Color.White);
-            if (GameOver)
-                g.DrawString(RessourcesLoxi.Texte, TexteDeMort, Position, CouleurTMort);
-
+            g.Draw(m_Texture, m_Position, m_Rectangle, Color.White);
+            /*
+            if (m_GameOver)
+            {
+                g.DrawString(RessourcesLoxi.Texte, m_DeadText, m_Position, m_DeadColor);
+            }*/
         }
     }
 }

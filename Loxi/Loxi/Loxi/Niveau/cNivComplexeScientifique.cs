@@ -85,7 +85,7 @@ namespace Loxi
 
             if (BarreDeDetection != null)
             {
-                if (BarreDeDetection.GameOver)
+                if (BarreDeDetection.m_GameOver)
                 {
                     TimerFin += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (Convert.ToInt32(TimerFin) == 5)
@@ -100,8 +100,8 @@ namespace Loxi
             Joueur.Update(Mur, RessourcesLoxi.JumpEffect, RessourcesLoxi.ShootEffect);
             foreach (EnnemyPatrol Ennemie in EnnemiesPatrols)
             {
-                Ennemie.Update(Joueur, Mur);
-                BarreDeDetection.Update(Ennemie.DiscoverYou,1);
+                //Ennemie.Update(Joueur, Mur);
+                //BarreDeDetection.Update(Ennemie.DiscoverYou,1);
                 Animationplayer.PlayAnimation(RifleSoldierPatrouille);
             }
 
@@ -134,7 +134,7 @@ namespace Loxi
                             break;
                         case EmplacementoutBase.leftside:
                             Animationplayer.PlayAnimation(RifleSoldierPatrouille);
-                            EnnemiPatrouille1.Update(null,null);
+                            //EnnemiPatrouille1.Update(null,null);
                             if (KeyboardHelper.KeyPressed(Keys.D))
                             {
                                 SideofOutBase = EmplacementoutBase.frontside;
@@ -143,7 +143,7 @@ namespace Loxi
                             break;
                         case EmplacementoutBase.rightside:
                             Animationplayer.PlayAnimation(RifleSoldierPatrouille);
-                            EnnemiPatrouille2.Update(null,null);
+                            //EnnemiPatrouille2.Update(null,null);
                             if (KeyboardHelper.KeyPressed(Keys.A))
                             {
                                 SideofOutBase = EmplacementoutBase.frontside;
@@ -216,7 +216,7 @@ namespace Loxi
                     if (KeyboardHelper.KeyPressed(Keys.Enter))
                     {
                         #region InBase
-                        BarreDeDetection = new HealthBars(RessourcesLoxi.HealtBar, new Vector2(100, 10), false, null, false);
+                        //BarreDeDetection = new HealthBars(RessourcesLoxi.HealtBar, new Vector2(100, 10), false, null, false);
                         Joueur.Position = new Vector2(200, 540);
                         ////A
                         PartofInBase = EmplacementInBase.A;

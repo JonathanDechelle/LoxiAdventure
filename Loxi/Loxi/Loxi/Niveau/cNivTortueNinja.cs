@@ -133,9 +133,9 @@ namespace Loxi
                         if (Timer >= 3)
                         {
                             Presentationfinie = true;
-                            Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
-                            MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 1, 70,AllAnimationLoxi.WalkingRaph,AllAnimationLoxi.RaphAttack);
+                            //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
+                            //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 1, 70,RessourcesLoxi.WalkingRaphAnimation,RessourcesLoxi.RaphAttackAnimation);
                         }
 
                     }
@@ -151,9 +151,9 @@ namespace Loxi
                         {
                             Presentationfinie = true;
                             Joueur.Position = new Vector2(200, 480);
-                            Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
-                            MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 2, 90,AllAnimationLoxi.WalkingMich,AllAnimationLoxi.MichAttack);
+                            //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
+                            //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 2, 90,RessourcesLoxi.WalkingMichAnimation,RessourcesLoxi.MichAttackAnimation);
                         }
                     }
                     break;
@@ -168,9 +168,9 @@ namespace Loxi
                         {
                             Presentationfinie = true;
                             Joueur.Position = new Vector2(200, 480);
-                            Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
-                            MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 3, 110,AllAnimationLoxi.WalkingDon,AllAnimationLoxi.DonAttack);
+                            //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
+                            //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 3, 110, RessourcesLoxi.WalkingDonAnimation, RessourcesLoxi.DonAttackAnimation);
                         }
                     }
                     break;
@@ -185,9 +185,9 @@ namespace Loxi
                         {
                             Presentationfinie = true;
                             Joueur.Position = new Vector2(200, 480);
-                            Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
-                            MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 4, 120,AllAnimationLoxi.WalkingLeo,AllAnimationLoxi.LeoAttack);
+                            //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
+                            //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 4, 120,RessourcesLoxi.WalkingLeoAnimation,RessourcesLoxi.LeoAttackAnimation);
                             Parole = "";
                         }
                     }
@@ -206,7 +206,7 @@ namespace Loxi
                     if (Timer >= 4)
                     {
                         Parole = " Je vais te \n Transformer\n comme nous...\n EN NINJA !!! \n    Tiens toi pret";
-                        AnimationPlayer.PlayAnimation(AllAnimationLoxi.DanseTransformation);
+                        AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
                     }
 
                     if (Timer >= 10 && !Joueur.LoxiTransformation)
@@ -229,7 +229,7 @@ namespace Loxi
             #region Traitement de Changement de niveau
             if (MechantVie != null && Presentationfinie && !ColorBackToNormal)
             {
-                if (MechantVie.GameOver)
+                if (MechantVie.m_GameOver)
                 {
                     if (IniTimer == false)
                     {
@@ -252,10 +252,10 @@ namespace Loxi
                                                      ColorBackToNormal = true; 
                                                      StateOfGame=GameState.AfterFight;
                                                      Timer = 0;
-                                 AP2.PlayAnimation(AllAnimationLoxi.MichAttack);
-                                 AP3.PlayAnimation(AllAnimationLoxi.LeoAttente);
-                                 AP4.PlayAnimation(AllAnimationLoxi.DonAttente);
-                                 AP5.PlayAnimation(AllAnimationLoxi.RaphAttente);
+                                 AP2.PlayAnimation(RessourcesLoxi.MichAttenteAnimation);
+                                 AP3.PlayAnimation(RessourcesLoxi.LeoAttenteAnimation);
+                                 AP4.PlayAnimation(RessourcesLoxi.DonAttenteAnimation);
+                                 AP5.PlayAnimation(RessourcesLoxi.RaphAttenteAnimation);
                                 break;
                         }
 
@@ -275,10 +275,10 @@ namespace Loxi
             #region Update Vie/Ennemi
             if (Ennemi != null && Vie != null && !ColorBackToNormal)
             {
-                Ennemi.Update(gameTime, Joueur);
-                Vie.Update(Ennemi.DamageYou,Ennemi.Force);
+                //Ennemi.Update(gameTime, Joueur);
+                //Vie.Update(Ennemi.DamageYou,Ennemi.Force);
 
-                if (Vie.GameOver && !MechantVie.GameOver)
+                if (Vie.m_GameOver && !MechantVie.m_GameOver)
                 {
                     TimerFin += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (Convert.ToInt32(TimerFin) == 3)
@@ -292,11 +292,11 @@ namespace Loxi
                
             #region CheckBalle/UpdateMechantVie
                 foreach (Bullets bullet in Joueur.bullets)
-                { 
+                { /*
                     if (bullet.m_Rectangle.Intersects(Ennemi.Rectangle))
                         MechantVie.Update(true,1);
                     else
-                        MechantVie.Update(false,1);
+                        MechantVie.Update(false,1);*/
                 }
                 #endregion
 

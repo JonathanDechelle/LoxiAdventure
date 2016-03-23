@@ -7,14 +7,19 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using MyGameLibrairy;
 
-namespace MyGameLibrairy
+namespace Loxi
 {
     /// <summary>
     /// Classe servant à créer un personnage
     /// </summary>
-    public class Player:AllAnimationLoxi
+    public class Player
     {
+        private AnimationPlayer AnimationPlayer = new AnimationPlayer();
+        public float WalkingFrameTimer = 0.1f;
+        public float CourseFrameTimer = 0.05f;
+
         public List<Bullets> bullets = new List<Bullets>();
         SpriteEffects flip = SpriteEffects.None;
         public Vector2 Position;
@@ -44,20 +49,20 @@ namespace MyGameLibrairy
         {
             #region Loxi
             RecPerso = new Rectangle(Convert.ToInt32(Position.X), Convert.ToInt32(Position.Y), 90, 90);
-            NothingNormal = DonaldNothingAnimation;
-            NothingTransfo = LoxinothingAnimation;
-            WalkigNormal = DonaldWalkingAnimation;
-            WalkingTransfo = LoxiwalkAnimation;
-            JumpNormal = DonaldJumpAnimation;
-            JumpTransfo = LoxiJumpAnimation;
-            JumpForwardNormal = DonaldJumpAnimation;
-            JumpForwardTransfo = LoxiJumpAnimation;
-            TransfoNormal = TransformationAnimation;
-            ShootNormal = DonaldShootAnimation;
-            ShootUpwardNormal = DonaldShootUpwardAnimation;
-            Attack = HulaAnimation;
-            Crouch = DonaldWalkingAnimation;
-            AttackCrouch = DonaldNothingAnimation;
+            NothingNormal = RessourcesLoxi.DonaldNothingAnimation;
+            NothingTransfo = RessourcesLoxi.LoxiNothingAnimation;
+            WalkigNormal = RessourcesLoxi.DonaldWalkingAnimation;
+            WalkingTransfo = RessourcesLoxi.LoxiwalkAnimation;
+            JumpNormal = RessourcesLoxi.DonaldJumpAnimation;
+            JumpTransfo = RessourcesLoxi.LoxiJumpAnimation;
+            JumpForwardNormal = RessourcesLoxi.DonaldJumpAnimation;
+            JumpForwardTransfo = RessourcesLoxi.LoxiJumpAnimation;
+            TransfoNormal = RessourcesLoxi.TransformationAnimation;
+            ShootNormal = RessourcesLoxi.DonaldShootAnimation;
+            ShootUpwardNormal = RessourcesLoxi.DonaldShootUpwardAnimation;
+            Attack = RessourcesLoxi.HulaAnimation;
+            Crouch = RessourcesLoxi.DonaldWalkingAnimation;
+            AttackCrouch = RessourcesLoxi.DonaldNothingAnimation;
             #endregion
       
         }

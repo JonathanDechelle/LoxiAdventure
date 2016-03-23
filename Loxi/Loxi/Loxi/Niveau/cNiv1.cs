@@ -41,7 +41,7 @@ namespace Loxi
             Player = new Player(true, true);
             Player.Position = new Vector2(140, 140);
             EnnemiePatrol = new EnnemyPatrol(RessourcesLoxi.TestPatrouille, new Vector2(400, 300), 150);
-            BarreVie = new HealthBars(RessourcesLoxi.HealtBar, new Vector2(Player.Position.X-80, Player.Position.Y-180),true,Player,false);
+            BarreVie = new HealthBars(RessourcesLoxi.HealtBar, new Vector2(-80, -180));
             Obstacles = new List<ObjCollisionable>();
             Obstacles.Add(new ObjCollisionable(10, 200, RessourcesLoxi.Test, 132,132, Color.Blue));
             Obstacles.Add(new ObjCollisionable(600, 400, RessourcesLoxi.Test, 62,62, Color.Blue));
@@ -89,10 +89,10 @@ namespace Loxi
                     btnPlay.m_IsClicked = false;
                 }
 
-                EnnemiePatrol.Update(Player,Obstacles);
+                //EnnemiePatrol.Update(Player,Obstacles);
                 Player.Update(Obstacles,RessourcesLoxi.JumpEffect,RessourcesLoxi.ShootEffect);
                 Camera.Update(Player.Position);
-                BarreVie.Update(false,1);
+                //BarreVie.Update(false,1);
                 //  LoadEnnemies();
 
                 spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
