@@ -40,10 +40,10 @@ namespace Loxi
         public override void Load()
         {
             //Load daffy
-            DaffyAnimation = new Animation(RessourcesLoxi.DaffiDuck, 90, 0.3f, 2, true);
-            DaffiExit = new Animation(RessourcesLoxi.DaffiExitLevel, 80, 0.28f, 2, true);
+            DaffyAnimation = new Animation(GameResources.DaffiDuck, 90, 0.3f, 2, true);
+            DaffiExit = new Animation(GameResources.DaffiExitLevel, 80, 0.28f, 2, true);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(RessourcesLoxi.Rasputin);
+            MediaPlayer.Play(GameResources.Rasputin);
         }
 
         public override void Update(GameTime gameTime)
@@ -58,30 +58,30 @@ namespace Loxi
                         Joueur.Load(m_Content);
                         Camera = new Camera(m_GraphicsDeviceManager.GraphicsDevice.Viewport);
                          //Camera.Zoom -= 50;
-                        Platforms.Add(new ObjCollisionable(0, 200, RessourcesLoxi.Test, 300, 300, Color.Blue));
-                        Platforms.Add(new ObjCollisionable(400, 400, RessourcesLoxi.Test, 200, 200, Color.YellowGreen));
-                        Platforms.Add(new ObjCollisionable(700, 700, RessourcesLoxi.Test, 200, 200, Color.OrangeRed));
-                        Platforms.Add(new ObjCollisionable(1100, 700, RessourcesLoxi.Test, 600, 200, Color.SandyBrown));
-                        Platforms.Add(new ObjCollisionable(1700, 700, RessourcesLoxi.Test, 200, 100, Color.Salmon));//Peut etre a inclure dans la deerniere platform
-                        Platforms.Add(new ObjCollisionable(1800, 650, RessourcesLoxi.Test, 200, 200, Color.Blue));
-                        Platforms.Add(new ObjCollisionable(2000, 600, RessourcesLoxi.Test, 300, 300, Color.DarkGoldenrod));
-                        Platforms.Add(new ObjCollisionable(2300, 550, RessourcesLoxi.Test, 300, 300, Color.DarkBlue));
-                        Platforms.Add(new ObjCollisionable(2600, 500, RessourcesLoxi.Test, 300, 300, Color.DarkGray));
-                        Platforms.Add(new ObjCollisionable(3000, 420, RessourcesLoxi.Test, 200, 200, Color.DeepPink));
-                        Platforms.Add(new ObjCollisionable(3500, 650, RessourcesLoxi.Test, 200, 200, Color.Gainsboro));
-                        Platforms.Add(new ObjCollisionable(4000, 850, RessourcesLoxi.Test, 200, 200, Color.LawnGreen));
-                        Platforms.Add(new ObjCollisionable(3700, 1200, RessourcesLoxi.Test, 100, 100, Color.Aqua));
-                        Platforms.Add(new ObjCollisionable(3300, 1250, RessourcesLoxi.Test, 100, 100, Color.BurlyWood));
-                        Platforms.Add(new ObjCollisionable(2400, 1250, RessourcesLoxi.Test, 600, 200, Color.Chartreuse));
-                        Platforms.Add(new ObjCollisionable(1400, 1700, RessourcesLoxi.Test, 600, 200, Color.Cyan));
-                        Platforms.Add(new ObjCollisionable(900, 1700, RessourcesLoxi.Test, 200, 200, Color.Crimson));
-                        Platforms.Add(new ObjCollisionable(500, 1700, RessourcesLoxi.Test, 200, 200, Color.DarkGray));
-                        Platforms.Add(new ObjCollisionable(400, 1650, RessourcesLoxi.Test, 100, 100, Color.DeepPink));
-                        Platforms.Add(new ObjCollisionable(200, 1600, RessourcesLoxi.Test, 200, 200, Color.DarkOrange));
-                        Platforms.Add(new ObjCollisionable(0, 1550, RessourcesLoxi.Test, 200, 200, Color.DarkSalmon));
-                        Platforms.Add(new ObjCollisionable(-600, 1550, RessourcesLoxi.Test, 200, 200, Color.DodgerBlue));
-                        Platforms.Add(new ObjCollisionable(-400, 2000, RessourcesLoxi.Test, 300, 200, Color.ForestGreen));
-                        Platforms.Add(new ObjCollisionable(-100, 2200, RessourcesLoxi.Test, 1300, 100, Color.Blue));
+                        Platforms.Add(new ObjCollisionable(0, 200, GameResources.Test, 300, 300, Color.Blue));
+                        Platforms.Add(new ObjCollisionable(400, 400, GameResources.Test, 200, 200, Color.YellowGreen));
+                        Platforms.Add(new ObjCollisionable(700, 700, GameResources.Test, 200, 200, Color.OrangeRed));
+                        Platforms.Add(new ObjCollisionable(1100, 700, GameResources.Test, 600, 200, Color.SandyBrown));
+                        Platforms.Add(new ObjCollisionable(1700, 700, GameResources.Test, 200, 100, Color.Salmon));//Peut etre a inclure dans la deerniere platform
+                        Platforms.Add(new ObjCollisionable(1800, 650, GameResources.Test, 200, 200, Color.Blue));
+                        Platforms.Add(new ObjCollisionable(2000, 600, GameResources.Test, 300, 300, Color.DarkGoldenrod));
+                        Platforms.Add(new ObjCollisionable(2300, 550, GameResources.Test, 300, 300, Color.DarkBlue));
+                        Platforms.Add(new ObjCollisionable(2600, 500, GameResources.Test, 300, 300, Color.DarkGray));
+                        Platforms.Add(new ObjCollisionable(3000, 420, GameResources.Test, 200, 200, Color.DeepPink));
+                        Platforms.Add(new ObjCollisionable(3500, 650, GameResources.Test, 200, 200, Color.Gainsboro));
+                        Platforms.Add(new ObjCollisionable(4000, 850, GameResources.Test, 200, 200, Color.LawnGreen));
+                        Platforms.Add(new ObjCollisionable(3700, 1200, GameResources.Test, 100, 100, Color.Aqua));
+                        Platforms.Add(new ObjCollisionable(3300, 1250, GameResources.Test, 100, 100, Color.BurlyWood));
+                        Platforms.Add(new ObjCollisionable(2400, 1250, GameResources.Test, 600, 200, Color.Chartreuse));
+                        Platforms.Add(new ObjCollisionable(1400, 1700, GameResources.Test, 600, 200, Color.Cyan));
+                        Platforms.Add(new ObjCollisionable(900, 1700, GameResources.Test, 200, 200, Color.Crimson));
+                        Platforms.Add(new ObjCollisionable(500, 1700, GameResources.Test, 200, 200, Color.DarkGray));
+                        Platforms.Add(new ObjCollisionable(400, 1650, GameResources.Test, 100, 100, Color.DeepPink));
+                        Platforms.Add(new ObjCollisionable(200, 1600, GameResources.Test, 200, 200, Color.DarkOrange));
+                        Platforms.Add(new ObjCollisionable(0, 1550, GameResources.Test, 200, 200, Color.DarkSalmon));
+                        Platforms.Add(new ObjCollisionable(-600, 1550, GameResources.Test, 200, 200, Color.DodgerBlue));
+                        Platforms.Add(new ObjCollisionable(-400, 2000, GameResources.Test, 300, 200, Color.ForestGreen));
+                        Platforms.Add(new ObjCollisionable(-100, 2200, GameResources.Test, 1300, 100, Color.Blue));
 
                         Joueur.Position = new Vector2(150, 150);
                         Joueur.LoxiTransformation = true;
@@ -95,7 +95,7 @@ namespace Loxi
                         Seconde += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                         if (!Reussi)
-                            Joueur.Update(Platforms, RessourcesLoxi.JumpEffect, RessourcesLoxi.ShootEffect);
+                            Joueur.Update(Platforms, GameResources.JumpEffect, GameResources.ShootEffect);
 
                         DistanceDaffiDonald = PositionDaffi - Joueur.Position;
 
@@ -145,7 +145,7 @@ namespace Loxi
             switch (GameState)
             {
                 case StateofGame.ExplicationLiberation: g.GraphicsDevice.Clear(Color.LightBlue);
-                    g.DrawString(RessourcesLoxi.Texte, "\nNiveau Liberation - \nAgent Loxi vous devrez sauver la victime \nen sautant de plateforme en platforme \navant la fin du temps imparti \n" +
+                    g.DrawString(GameResources.Texte, "\nNiveau Liberation - \nAgent Loxi vous devrez sauver la victime \nen sautant de plateforme en platforme \navant la fin du temps imparti \n" +
                                     "sinon le prisonnier sera tué bonne chance !!! \n\nrappel des commande \nWASD=direction\nshift=courir \nEspace=Sauter \nC=Attaque                           Appuyer sur Espace", new Vector2(20, 0), Color.Black);
 
                     break;
@@ -154,18 +154,18 @@ namespace Loxi
                     g.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                                     null, null, null, null, Camera.Transform);
                     g.GraphicsDevice.Clear(Color.DimGray);
-                    g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(-1000, 0,3000,1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipHorizontally, 0);
-                    g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(-1000, 1500, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.None, 0);
-                    g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(2000, 0, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
-                    g.Draw(RessourcesLoxi.BackgroundEtoile, new Rectangle(2000, 1500, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
+                    g.Draw(GameResources.BackgroundEtoile, new Rectangle(-1000, 0, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipHorizontally, 0);
+                    g.Draw(GameResources.BackgroundEtoile, new Rectangle(-1000, 1500, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.None, 0);
+                    g.Draw(GameResources.BackgroundEtoile, new Rectangle(2000, 0, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
+                    g.Draw(GameResources.BackgroundEtoile, new Rectangle(2000, 1500, 3000, 1500), null, Color.White, 0, new Vector2(), SpriteEffects.FlipVertically, 0);
                     foreach (ObjCollisionable platform in Platforms) { platform.Draw(g); }
                     if (Joueur != null && AnimationPlayer.m_Animation != null)
                     {
                         if (Reussi)
-                            g.DrawString(RessourcesLoxi.Texte, "Win                                                      thankyou!!!", new Vector2(Camera.X - 350, Camera.Y - 220), Color.Red);
+                            g.DrawString(GameResources.Texte, "Win                                                      thankyou!!!", new Vector2(Camera.X - 350, Camera.Y - 220), Color.Red);
                         else
                         {
-                            g.DrawString(RessourcesLoxi.Texte, TempsJeu.ToString(), new Vector2(Camera.X - 350, Camera.Y - 220), Color.Red);
+                            g.DrawString(GameResources.Texte, TempsJeu.ToString(), new Vector2(Camera.X - 350, Camera.Y - 220), Color.Red);
                             Joueur.Draw(gametime, g);
                         }
 

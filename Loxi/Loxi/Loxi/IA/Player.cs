@@ -49,20 +49,20 @@ namespace Loxi
         {
             #region Loxi
             RecPerso = new Rectangle(Convert.ToInt32(Position.X), Convert.ToInt32(Position.Y), 90, 90);
-            NothingNormal = RessourcesLoxi.DonaldNothingAnimation;
-            NothingTransfo = RessourcesLoxi.LoxiNothingAnimation;
-            WalkigNormal = RessourcesLoxi.DonaldWalkingAnimation;
-            WalkingTransfo = RessourcesLoxi.LoxiwalkAnimation;
-            JumpNormal = RessourcesLoxi.DonaldJumpAnimation;
-            JumpTransfo = RessourcesLoxi.LoxiJumpAnimation;
-            JumpForwardNormal = RessourcesLoxi.DonaldJumpAnimation;
-            JumpForwardTransfo = RessourcesLoxi.LoxiJumpAnimation;
-            TransfoNormal = RessourcesLoxi.TransformationAnimation;
-            ShootNormal = RessourcesLoxi.DonaldShootAnimation;
-            ShootUpwardNormal = RessourcesLoxi.DonaldShootUpwardAnimation;
-            Attack = RessourcesLoxi.HulaAnimation;
-            Crouch = RessourcesLoxi.DonaldWalkingAnimation;
-            AttackCrouch = RessourcesLoxi.DonaldNothingAnimation;
+            NothingNormal = GameResources.DonaldNothingAnimation;
+            NothingTransfo = GameResources.LoxiNothingAnimation;
+            WalkigNormal = GameResources.DonaldWalkingAnimation;
+            WalkingTransfo = GameResources.LoxiwalkAnimation;
+            JumpNormal = GameResources.DonaldJumpAnimation;
+            JumpTransfo = GameResources.LoxiJumpAnimation;
+            JumpForwardNormal = GameResources.DonaldJumpAnimation;
+            JumpForwardTransfo = GameResources.LoxiJumpAnimation;
+            TransfoNormal = GameResources.TransformationAnimation;
+            ShootNormal = GameResources.DonaldShootAnimation;
+            ShootUpwardNormal = GameResources.DonaldShootUpwardAnimation;
+            Attack = GameResources.HulaAnimation;
+            Crouch = GameResources.DonaldWalkingAnimation;
+            AttackCrouch = GameResources.DonaldNothingAnimation;
             #endregion
       
         }
@@ -405,7 +405,7 @@ namespace Loxi
 
         public void Shoot()
         {
-            Bullets newBullet = new Bullets(RessourcesLoxi.BalleJoueur);
+            Bullets newBullet = new Bullets(GameResources.BalleJoueur);
             newBullet.m_Speed = new Vector2((float)Math.Cos(AngleTir), (float)Math.Sin(AngleTir)) * 5f + Speed;
             if (flip == SpriteEffects.FlipHorizontally)
             {

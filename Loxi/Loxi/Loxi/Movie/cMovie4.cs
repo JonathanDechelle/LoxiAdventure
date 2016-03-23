@@ -90,20 +90,20 @@ namespace Loxi
             {
                 #region Rencontre
                 case State.Rencontre:
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
+                    AnimationPlayer.PlayAnimation(GameResources.DanseTransformation);
                     break;
                 #endregion
                 #region Combat
                 case State.Combat: if (I == 11)
                     {
                         #region AttackMich
-                        if (APMich.m_Animation == RessourcesLoxi.MichAttack2Animation && APMich.m_FrameIndex == 3)
+                        if (APMich.m_Animation == GameResources.MichAttack2Animation && APMich.m_FrameIndex == 3)
                         {
-                            APMich.PlayAnimation(RessourcesLoxi.MichAttenteAnimation);
+                            APMich.PlayAnimation(GameResources.MichAttenteAnimation);
                             AttackMich = true;
                         }
                         else if (!AttackMich)
-                            APMich.PlayAnimation(RessourcesLoxi.MichAttack2Animation);
+                            APMich.PlayAnimation(GameResources.MichAttack2Animation);
                         #endregion
 
                         if (AttackMich)
@@ -115,11 +115,11 @@ namespace Loxi
                                 PositionRaph.Y = 450;
 
                             if (PositionRaph.Y <= PositionWario.Y + 80)
-                                APRaph.PlayAnimation(RessourcesLoxi.RaphAttack2Animation);
+                                APRaph.PlayAnimation(GameResources.RaphAttack2Animation);
 
-                            if (APRaph.m_Animation == RessourcesLoxi.RaphAttack2Animation && APRaph.m_FrameIndex == 3)
+                            if (APRaph.m_Animation == GameResources.RaphAttack2Animation && APRaph.m_FrameIndex == 3)
                             {
-                                APRaph.PlayAnimation(RessourcesLoxi.RaphAttenteAnimation);
+                                APRaph.PlayAnimation(GameResources.RaphAttenteAnimation);
                                 AttackRaph = true;
                             }
                             #endregion
@@ -140,11 +140,11 @@ namespace Loxi
                             }
 
                             if (PositionDon.Y <= PositionWario.Y + 80)
-                                APDon.PlayAnimation(RessourcesLoxi.DonAttack2Animation);
+                                APDon.PlayAnimation(GameResources.DonAttack2Animation);
 
-                            if (APDon.m_Animation == RessourcesLoxi.DonAttack2Animation && APDon.m_FrameIndex == 3)
+                            if (APDon.m_Animation == GameResources.DonAttack2Animation && APDon.m_FrameIndex == 3)
                             {
-                                APDon.PlayAnimation(RessourcesLoxi.DonAttenteAnimation);
+                                APDon.PlayAnimation(GameResources.DonAttenteAnimation);
                                 AttackDon = true;
                             }
                             #endregion
@@ -165,11 +165,11 @@ namespace Loxi
                             }
 
                             if (PositionDon.Y <= PositionWario.Y + 80)
-                                APLeo.PlayAnimation(RessourcesLoxi.LeoAttack2Animation);
+                                APLeo.PlayAnimation(GameResources.LeoAttack2Animation);
 
-                            if (APLeo.m_Animation == RessourcesLoxi.LeoAttack2Animation && APLeo.m_FrameIndex == 3)
+                            if (APLeo.m_Animation == GameResources.LeoAttack2Animation && APLeo.m_FrameIndex == 3)
                             {
-                                APLeo.PlayAnimation(RessourcesLoxi.LeoAttenteAnimation);
+                                APLeo.PlayAnimation(GameResources.LeoAttenteAnimation);
                                 AttackLeo = true;
                             }
                             #endregion
@@ -181,7 +181,7 @@ namespace Loxi
                             PositionLoxi.Y = PositionWario.Y + 60;
                             if (!SCPart2)
                             {
-                                m_AnimationPlayer.PlayAnimation(RessourcesLoxi.SuperComboPart1);
+                                m_AnimationPlayer.PlayAnimation(GameResources.SuperComboPart1);
                                 if (m_AnimationPlayer.m_FrameIndex == 3)
                                 {
                                     SCPart2 = true;
@@ -189,7 +189,7 @@ namespace Loxi
                             }
                             else
                             {
-                                m_AnimationPlayer.PlayAnimation(RessourcesLoxi.SuperComboPart2);
+                                m_AnimationPlayer.PlayAnimation(GameResources.SuperComboPart2);
                                 if (m_AnimationPlayer.m_FrameIndex == 4)
                                 {
                                     AttackLoxi = true;
@@ -197,10 +197,10 @@ namespace Loxi
                             }
 
                             if (AttackLoxi)
-                                AnimationPlayer.PlayAnimation(RessourcesLoxi.WarioExploseAnimation);
+                                AnimationPlayer.PlayAnimation(GameResources.WarioExploseAnimation);
                         }
 
-                        if (AnimationPlayer.m_Animation == RessourcesLoxi.WarioExploseAnimation)
+                        if (AnimationPlayer.m_Animation == GameResources.WarioExploseAnimation)
 
                             if (AnimationPlayer.m_FrameIndex == 3)
                                 TableParole[I] = "NOOOOOOOOOOOOOOOOO";
@@ -218,27 +218,27 @@ namespace Loxi
             #region changement de parole
             switch (I)
             {
-                case 0: m_AnimationPlayer.PlayAnimation(RessourcesLoxi.LoxiNothingAnimation);
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
+                case 0: m_AnimationPlayer.PlayAnimation(GameResources.LoxiNothingAnimation);
+                    AnimationPlayer.PlayAnimation(GameResources.DanseTransformation);
                     break;
                 case 1: fontColor = CouleurParole.Loxi;
-                    m_AnimationPlayer.PlayAnimation(RessourcesLoxi.HulaAnimation);
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.NothingSplinter);
+                    m_AnimationPlayer.PlayAnimation(GameResources.HulaAnimation);
+                    AnimationPlayer.PlayAnimation(GameResources.NothingSplinter);
                     P = 0;
                     break;
                 case 2: fontColor = CouleurParole.Splinter;
-                    m_AnimationPlayer.PlayAnimation(RessourcesLoxi.LoxiNothingAnimation);
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
+                    m_AnimationPlayer.PlayAnimation(GameResources.LoxiNothingAnimation);
+                    AnimationPlayer.PlayAnimation(GameResources.DanseTransformation);
                     P = 1;
                     break;
                 case 3: fontColor = CouleurParole.Loxi;
-                    m_AnimationPlayer.PlayAnimation(RessourcesLoxi.Hula2Animation);
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.NothingSplinter);
+                    m_AnimationPlayer.PlayAnimation(GameResources.Hula2Animation);
+                    AnimationPlayer.PlayAnimation(GameResources.NothingSplinter);
                     P = 0;
                     break;
                 case 4: fontColor = CouleurParole.Splinter;
-                    m_AnimationPlayer.PlayAnimation(RessourcesLoxi.LoxiNothingAnimation);
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
+                    m_AnimationPlayer.PlayAnimation(GameResources.LoxiNothingAnimation);
+                    AnimationPlayer.PlayAnimation(GameResources.DanseTransformation);
                     P = 1;
                     break;
                 case 5: fontColor = CouleurParole.Loxi;
@@ -248,7 +248,7 @@ namespace Loxi
                     if (PositionSplinter.X < 0)
                     {
                         MovieState = State.Combat;
-                        AnimationPlayer.PlayAnimation(RessourcesLoxi.WarioExpliqueAnimation);
+                        AnimationPlayer.PlayAnimation(GameResources.WarioExpliqueAnimation);
                         if (!Repositionnement)
                         {
                             Repositionnement = true;
@@ -259,7 +259,7 @@ namespace Loxi
                     }
                     break;
                 case 6: fontColor = CouleurParole.Wario;
-                    m_AnimationPlayer.PlayAnimation(RessourcesLoxi.LoxiNothingAnimation);
+                    m_AnimationPlayer.PlayAnimation(GameResources.LoxiNothingAnimation);
 
                     P = 0;
                     break;
@@ -273,11 +273,11 @@ namespace Loxi
                     P = 1;
                     break;
                 case 10: fontColor = CouleurParole.Wario;
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.WarioSurprisAnimation);
-                    APDon.PlayAnimation(RessourcesLoxi.DonAttenteAnimation);
-                    APLeo.PlayAnimation(RessourcesLoxi.LeoAttenteAnimation);
-                    APRaph.PlayAnimation(RessourcesLoxi.RaphAttenteAnimation);
-                    APMich.PlayAnimation(RessourcesLoxi.MichAttenteAnimation);
+                    AnimationPlayer.PlayAnimation(GameResources.WarioSurprisAnimation);
+                    APDon.PlayAnimation(GameResources.DonAttenteAnimation);
+                    APLeo.PlayAnimation(GameResources.LeoAttenteAnimation);
+                    APRaph.PlayAnimation(GameResources.RaphAttenteAnimation);
+                    APMich.PlayAnimation(GameResources.MichAttenteAnimation);
 
                     DonEffect = SpriteEffects.FlipHorizontally;
                     LeoEffect = SpriteEffects.FlipHorizontally;
@@ -309,7 +309,7 @@ namespace Loxi
             {
                 #region rencontre
                 case State.Rencontre:
-                    g.DrawString(RessourcesLoxi.Texte2, TableParole[I], TabPositionParole[P], TabCouleur[(int)fontColor]);
+                    g.DrawString(GameResources.Texte2, TableParole[I], TabPositionParole[P], TabCouleur[(int)fontColor]);
                     AnimationPlayer.Draw(gametime, g, PositionSplinter, SpriteEffects.None);
                     m_AnimationPlayer.Draw(gametime, g, PositionLoxi, SpriteEffects.None);
                     break;
@@ -327,7 +327,7 @@ namespace Loxi
                         APRaph.Draw(gametime, g, PositionRaph, RaphEffect);
                     }
                     m_AnimationPlayer.Draw(gametime, g, PositionLoxi, SpriteEffects.None);
-                    g.DrawString(RessourcesLoxi.Texte2, TableParole[I], TabPositionParole[P], TabCouleur[(int)fontColor]);
+                    g.DrawString(GameResources.Texte2, TableParole[I], TabPositionParole[P], TabCouleur[(int)fontColor]);
                     break;
             }
         }

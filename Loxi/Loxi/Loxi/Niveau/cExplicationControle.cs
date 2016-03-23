@@ -43,10 +43,10 @@ namespace Loxi
          public override void Draw(GameTime gametime, SpriteBatch g)
          {
              g.GraphicsDevice.Clear(Color.DarkOrange);
-             g.DrawString(RessourcesLoxi.Texte,
+             g.DrawString(GameResources.Texte,
             " Voici donald alias LOXI, durant toute son aventure \n vous devrez le controler grâce aux contrôles \n W,A,S,D pour la direction \n Espace pour sauter (À partir du 2 ieme level) \n Shift pour courir  \n et C pour tirer (À partir du 2 ieme level)",
             new Vector2(),Color.DarkSlateGray);
-             g.DrawString(RessourcesLoxi.Texte, "Escape pour revenir au menu", new Vector2(350, 300), Color.Black);                                                                                                          
+             g.DrawString(GameResources.Texte, "Escape pour revenir au menu", new Vector2(350, 300), Color.Black);                                                                                                          
                                             
              Joueur.Draw(gametime, g);
          }

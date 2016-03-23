@@ -20,7 +20,7 @@ namespace Loxi
         bool IniTimer = false,ColorBackToNormal;
         #region BeforeFight--Intro
         string Parole;
-        Rectangle BullePosition = new Rectangle(40, 170, (int)(RessourcesLoxi.BulleParole.Width * 1.5),(int)(RessourcesLoxi.BulleParole.Height * 1.5));
+        Rectangle BullePosition = new Rectangle(40, 170, (int)(GameResources.BulleParole.Width * 1.5), (int)(GameResources.BulleParole.Height * 1.5));
         Vector2 ParolePosition = new Vector2(100, 230);
         Color CouleurParole = Color.DarkGreen;
         float RotationBulle = 0;
@@ -28,16 +28,16 @@ namespace Loxi
         #region PresentationTortue-(15secondeavantcombat)
         bool Presentationfinie;
         #region Raphael
-        Animation PresentationRaph = new Animation(RessourcesLoxi.PresentRaph, 130, 0.5f, 4, false);
+        Animation PresentationRaph = new Animation(GameResources.PresentRaph, 130, 0.5f, 4, false);
         #endregion
         #region Leonardo
-        Animation PresentationLeonardo = new Animation(RessourcesLoxi.PresentLeonardo, 130, 0.5f, 4, false);
+        Animation PresentationLeonardo = new Animation(GameResources.PresentLeonardo, 130, 0.5f, 4, false);
         #endregion
         #region Donatello
-        Animation PresentationDonatello = new Animation(RessourcesLoxi.PresentDonatello, 130, 0.5f, 4, false);
+        Animation PresentationDonatello = new Animation(GameResources.PresentDonatello, 130, 0.5f, 4, false);
         #endregion
         #region Michelangelo
-        Animation PresentationMichelangelo = new Animation(RessourcesLoxi.PresentMichelangelo, 130, 0.5f, 4, false);
+        Animation PresentationMichelangelo = new Animation(GameResources.PresentMichelangelo, 130, 0.5f, 4, false);
         #endregion
         #endregion
         #region afterPresentation
@@ -51,8 +51,8 @@ namespace Loxi
                         AP3 = new AnimationPlayer(),
                         AP4 = new AnimationPlayer(),
                         AP5 = new AnimationPlayer();
-                        
-        Animation PresentationCombattants = new Animation(RessourcesLoxi.PresentCombatWarrior, 120, 1.5f, 2, true);
+
+        Animation PresentationCombattants = new Animation(GameResources.PresentCombatWarrior, 120, 1.5f, 2, true);
        
         
         String OpponentName = "Raphaël";
@@ -73,7 +73,7 @@ namespace Loxi
             Joueur = new Player(true, true);
             Joueur.Position = new Vector2(200, 20);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(RessourcesLoxi.SongNiv2);
+            MediaPlayer.Play(GameResources.SongNiv2);
         }
 
         public override void Load()
@@ -96,14 +96,14 @@ namespace Loxi
                     {
                         Parole = "Han oui??\nQue voulez \nvous dire\n par là ?";
                         ParolePosition = new Vector2(Joueur.Position.X - 210, Joueur.Position.Y - 180);
-                        BullePosition = new Rectangle((int)(Joueur.Position.X - 130), (int)(Joueur.Position.Y - 250), RessourcesLoxi.BulleParole.Width, RessourcesLoxi.BulleParole.Height);
+                        BullePosition = new Rectangle((int)(Joueur.Position.X - 130), (int)(Joueur.Position.Y - 250), GameResources.BulleParole.Width, GameResources.BulleParole.Height);
                         RotationBulle = 20;
                         CouleurParole = Color.Blue;
                     }
                     if (Timer >= 10)
                     {
                         Parole = "Nous allons te\ntester. Nous allons \nvoir si tu vaux la\n peine de devenir\n comme nous\n      !DES NINJA!";
-                        BullePosition = new Rectangle(40, 170, (int)(RessourcesLoxi.BulleParole.Width * 1.5), (int)(RessourcesLoxi.BulleParole.Height * 1.5));
+                        BullePosition = new Rectangle(40, 170, (int)(GameResources.BulleParole.Width * 1.5), (int)(GameResources.BulleParole.Height * 1.5));
                         ParolePosition = new Vector2(100, 230);
                         CouleurParole = Color.DarkGreen;
                         RotationBulle = 0;
@@ -135,7 +135,7 @@ namespace Loxi
                             Presentationfinie = true;
                             //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
                             //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 1, 70,RessourcesLoxi.WalkingRaphAnimation,RessourcesLoxi.RaphAttackAnimation);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 1, 70, GameResources.WalkingRaphAnimation, GameResources.RaphAttackAnimation);
                         }
 
                     }
@@ -153,7 +153,7 @@ namespace Loxi
                             Joueur.Position = new Vector2(200, 480);
                             //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
                             //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 2, 90,RessourcesLoxi.WalkingMichAnimation,RessourcesLoxi.MichAttackAnimation);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 2, 90, GameResources.WalkingMichAnimation, GameResources.MichAttackAnimation);
                         }
                     }
                     break;
@@ -170,7 +170,7 @@ namespace Loxi
                             Joueur.Position = new Vector2(200, 480);
                             //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
                             //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 3, 110, RessourcesLoxi.WalkingDonAnimation, RessourcesLoxi.DonAttackAnimation);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 3, 110, GameResources.WalkingDonAnimation, GameResources.DonAttackAnimation);
                         }
                     }
                     break;
@@ -187,7 +187,7 @@ namespace Loxi
                             Joueur.Position = new Vector2(200, 480);
                             //Vie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(30, 50), false, null, false);
                             //MechantVie = new HealthBars(RessourcesLoxi.HealtBarCombat, new Vector2(450, 50), false, null, true);
-                            Ennemi = new CombatIA(new Vector2(600, 480), 4, 120,RessourcesLoxi.WalkingLeoAnimation,RessourcesLoxi.LeoAttackAnimation);
+                            Ennemi = new CombatIA(new Vector2(600, 480), 4, 120, GameResources.WalkingLeoAnimation, GameResources.LeoAttackAnimation);
                             Parole = "";
                         }
                     }
@@ -198,7 +198,7 @@ namespace Loxi
                     if (Timer >= 1)
                     {
                         Parole = "Bravo étranger,\nTu as réussi a\nbattre tous mes\n fils je vais te\n récompenser!!";
-                        BullePosition = new Rectangle(140, 20, (int)(RessourcesLoxi.BulleParole.Width *1.4), (int)(RessourcesLoxi.BulleParole.Height* 1.4));
+                        BullePosition = new Rectangle(140, 20, (int)(GameResources.BulleParole.Width * 1.4), (int)(GameResources.BulleParole.Height * 1.4));
                         ParolePosition = new Vector2(20, 130);
                         CouleurParole = Color.DarkGreen;
                         RotationBulle = 20;
@@ -206,7 +206,7 @@ namespace Loxi
                     if (Timer >= 4)
                     {
                         Parole = " Je vais te \n Transformer\n comme nous...\n EN NINJA !!! \n    Tiens toi pret";
-                        AnimationPlayer.PlayAnimation(RessourcesLoxi.DanseTransformation);
+                        AnimationPlayer.PlayAnimation(GameResources.DanseTransformation);
                     }
 
                     if (Timer >= 10 && !Joueur.LoxiTransformation)
@@ -252,10 +252,10 @@ namespace Loxi
                                                      ColorBackToNormal = true; 
                                                      StateOfGame=GameState.AfterFight;
                                                      Timer = 0;
-                                 AP2.PlayAnimation(RessourcesLoxi.MichAttenteAnimation);
-                                 AP3.PlayAnimation(RessourcesLoxi.LeoAttenteAnimation);
-                                 AP4.PlayAnimation(RessourcesLoxi.DonAttenteAnimation);
-                                 AP5.PlayAnimation(RessourcesLoxi.RaphAttenteAnimation);
+                                                     AP2.PlayAnimation(GameResources.MichAttenteAnimation);
+                                                     AP3.PlayAnimation(GameResources.LeoAttenteAnimation);
+                                                     AP4.PlayAnimation(GameResources.DonAttenteAnimation);
+                                                     AP5.PlayAnimation(GameResources.RaphAttenteAnimation);
                                 break;
                         }
 
@@ -270,7 +270,7 @@ namespace Loxi
             }
             #endregion
 
-            Joueur.Update(null, RessourcesLoxi.JumpEffect, RessourcesLoxi.ShootEffect);
+            Joueur.Update(null, GameResources.JumpEffect, GameResources.ShootEffect);
 
             #region Update Vie/Ennemi
             if (Ennemi != null && Vie != null && !ColorBackToNormal)
@@ -309,16 +309,16 @@ namespace Loxi
             {
                 #region beforeFight
                 case GameState.BeforeFight:
-                    g.Draw(RessourcesLoxi.grotte, new Vector2 (), Color.SlateGray);
-                    g.Draw(RessourcesLoxi.Perchoir, new Rectangle(300, 100, 140, 140), Color.SlateGray);
+                    g.Draw(GameResources.grotte, new Vector2(), Color.SlateGray);
+                    g.Draw(GameResources.Perchoir, new Rectangle(300, 100, 140, 140), Color.SlateGray);
                     if (Timer >= 2)
                     {
-                        g.Draw(RessourcesLoxi.SplinterSingle, new Rectangle(300, 100, RessourcesLoxi.SplinterSingle.Width * 2, RessourcesLoxi.SplinterSingle.Height * 2), Color.White);
+                        g.Draw(GameResources.SplinterSingle, new Rectangle(300, 100, GameResources.SplinterSingle.Width * 2, GameResources.SplinterSingle.Height * 2), Color.White);
 
                         if (Timer >= 3)
                         {
-                            g.Draw(RessourcesLoxi.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), SpriteEffects.None, 0);
-                            g.DrawString(RessourcesLoxi.Texte2, Parole, ParolePosition, CouleurParole);
+                            g.Draw(GameResources.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), SpriteEffects.None, 0);
+                            g.DrawString(GameResources.Texte2, Parole, ParolePosition, CouleurParole);
                         }
 
                         if (Timer >= 16)
@@ -327,7 +327,7 @@ namespace Loxi
                         }
 
                         if(Timer>=20)
-                        g.DrawString(RessourcesLoxi.Texte2, "Direction = A,D\n Sauter = Espace\n Tirer = C \n Courir=Shift+Direction", new Vector2(10, 10), Color.White);
+                            g.DrawString(GameResources.Texte2, "Direction = A,D\n Sauter = Espace\n Tirer = C \n Courir=Shift+Direction", new Vector2(10, 10), Color.White);
 
                     }
                     break;
@@ -336,41 +336,41 @@ namespace Loxi
                 case GameState.Raphael:
                     if (Presentationfinie)
                     {
-                        g.Draw(RessourcesLoxi.grotte2, new Vector2(), Color.OrangeRed);
+                        g.Draw(GameResources.grotte2, new Vector2(), Color.OrangeRed);
                     }
                     break;
                 case GameState.Michelangelo:
                     if(Presentationfinie)
                     {
-                        g.Draw(RessourcesLoxi.grotte3, new Vector2(), Color.Orange);
+                        g.Draw(GameResources.grotte3, new Vector2(), Color.Orange);
                     }
                     break;
                 case GameState.Donatello:
                     if (Presentationfinie)
-                        g.Draw(RessourcesLoxi.grotte4, new Vector2(), Color.Purple);
+                        g.Draw(GameResources.grotte4, new Vector2(), Color.Purple);
                     break;
                 case GameState.Leonardo:
                     {
                         if (Presentationfinie)
                         {
-                           g.Draw(RessourcesLoxi.grotte5, new Vector2(), Color.Blue);
+                            g.Draw(GameResources.grotte5, new Vector2(), Color.Blue);
                         }
                     }
                     break;
                 #endregion
                 #region afterFight
                 case GameState.AfterFight:
-                    g.Draw(RessourcesLoxi.grotte5, new Vector2(), Color.Gray);
+                    g.Draw(GameResources.grotte5, new Vector2(), Color.Gray);
 
                     if(Timer<=7 || Timer>=14)
-                    g.Draw(RessourcesLoxi.SplinterSingle, new Rectangle(190, 200, RessourcesLoxi.SplinterSingle.Width * 2, RessourcesLoxi.SplinterSingle.Height * 2), Color.White);
+                        g.Draw(GameResources.SplinterSingle, new Rectangle(190, 200, GameResources.SplinterSingle.Width * 2, GameResources.SplinterSingle.Height * 2), Color.White);
                     else
                     AnimationPlayer.Draw(gametime, g, new Vector2(270, 350), SpriteEffects.None);
 
                     if (Timer >= 1)
                     {
-                        g.Draw(RessourcesLoxi.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), SpriteEffects.None, 0);
-                        g.DrawString(RessourcesLoxi.Texte2, Parole, ParolePosition, CouleurParole);
+                        g.Draw(GameResources.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), SpriteEffects.None, 0);
+                        g.DrawString(GameResources.Texte2, Parole, ParolePosition, CouleurParole);
                     }
                    
                     AP2.Draw(gametime, g, new Vector2(400, 500), SpriteEffects.FlipHorizontally);
@@ -388,8 +388,8 @@ namespace Loxi
                 AnimationPlayer.Draw(gametime, g, new Vector2(g.GraphicsDevice.Viewport.Width / 2, g.GraphicsDevice.Viewport.Height), SpriteEffects.None);
                 if (AnimationPlayer.m_FrameIndex == 3)
                 {
-                    g.DrawString(RessourcesLoxi.Texte, OpponentName, new Vector2(550, 100), OpponentColor);
-                    g.DrawString(RessourcesLoxi.Texte2, "Direction = A,D\n Sauter = Espace\n Tirer = C \n Courir=Shift+Direction", new Vector2(10, 10), OpponentColor);
+                    g.DrawString(GameResources.Texte, OpponentName, new Vector2(550, 100), OpponentColor);
+                    g.DrawString(GameResources.Texte2, "Direction = A,D\n Sauter = Espace\n Tirer = C \n Courir=Shift+Direction", new Vector2(10, 10), OpponentColor);
                 }
             }
 #endregion

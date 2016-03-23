@@ -23,7 +23,7 @@ namespace Loxi
 
         public override void Load()
         {
-            MediaPlayer.Play(RessourcesLoxi.FinalSong);
+            MediaPlayer.Play(GameResources.FinalSong);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -39,8 +39,8 @@ namespace Loxi
         {
             g.Draw(m_Content.Load<Texture2D>("plage2"), new Vector2(), Color.White);
 
-            g.DrawString(RessourcesLoxi.Texte, "thank you for playing", new Vector2(350, 50), Color.OrangeRed);
-            g.DrawString(RessourcesLoxi.Texte2, "Key E for go to MainMenu", new Vector2(400, 100), Color.Red);
+            g.DrawString(GameResources.Texte, "thank you for playing", new Vector2(350, 50), Color.OrangeRed);
+            g.DrawString(GameResources.Texte2, "Key E for go to MainMenu", new Vector2(400, 100), Color.Red);
         }
     }
 }

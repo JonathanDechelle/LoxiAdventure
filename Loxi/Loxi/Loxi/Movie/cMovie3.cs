@@ -21,7 +21,7 @@ namespace Loxi
         Vector2 PosAnim = new Vector2(100, 480);
         #endregion
         #region Blabla
-        Rectangle BullePosition = new Rectangle(400, 0, (int)(RessourcesLoxi.BulleParole.Width * 1.5), (int)(RessourcesLoxi.BulleParole.Height * 1.5));
+        Rectangle BullePosition = new Rectangle(400, 0, (int)(GameResources.BulleParole.Width * 1.5), (int)(GameResources.BulleParole.Height * 1.5));
         Vector2 ParolePosition = new Vector2(270, 130);
         Color CouleurParole = Color.Red;
         SpriteEffects flip = SpriteEffects.None;
@@ -51,7 +51,7 @@ namespace Loxi
         }
         public override void Load()
         {
-            MediaPlayer.Play(RessourcesLoxi.SongCinematique3);
+            MediaPlayer.Play(GameResources.SongCinematique3);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -68,7 +68,7 @@ namespace Loxi
                 if (AnimationPlayer.m_FrameIndex == 18)//si fin d'animation de tranfo
                     TransfoNinjaComplete = true;
                 else
-                    AnimationPlayer.PlayAnimation(RessourcesLoxi.TransfoNinja);
+                    AnimationPlayer.PlayAnimation(GameResources.TransfoNinja);
 
                 if (TransfoNinjaComplete)
                 {
@@ -80,9 +80,9 @@ namespace Loxi
                     }
 
                     if (!WarioSexplique)
-                        AP2.PlayAnimation(RessourcesLoxi.WarioSurprisAnimation);
+                        AP2.PlayAnimation(GameResources.WarioSurprisAnimation);
                     else
-                        AP2.PlayAnimation(RessourcesLoxi.WarioExpliqueAnimation);
+                        AP2.PlayAnimation(GameResources.WarioExpliqueAnimation);
 
                     if (NumParole == 2)
                     {
@@ -155,9 +155,9 @@ namespace Loxi
                 }
             }
             else if (!SorsDeFaussePart2)
-                AnimationPlayer.PlayAnimation(RessourcesLoxi.SorsDefausse1);
+                AnimationPlayer.PlayAnimation(GameResources.SorsDefausse1);
             else
-                AnimationPlayer.PlayAnimation(RessourcesLoxi.SorsDefausse2);
+                AnimationPlayer.PlayAnimation(GameResources.SorsDefausse2);
 
            
         }
@@ -165,13 +165,13 @@ namespace Loxi
         public override void Draw(GameTime gametime, SpriteBatch g)
         {
             if (!TransfoNinjaComplete)
-                g.Draw(RessourcesLoxi.WarioNormal, new Rectangle(500, 200, RessourcesLoxi.WarioNormal.Width * 2, RessourcesLoxi.WarioNormal.Height * 2), Color.White);
+                g.Draw(GameResources.WarioNormal, new Rectangle(500, 200, GameResources.WarioNormal.Width * 2, GameResources.WarioNormal.Height * 2), Color.White);
             else
             {
-                g.Draw(RessourcesLoxi.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), flip, 0);
-                g.DrawString(RessourcesLoxi.Texte2, TabParole[NumParole], ParolePosition, CouleurParole);
+                g.Draw(GameResources.BulleParole, BullePosition, null, Color.White, RotationBulle, new Vector2(), flip, 0);
+                g.DrawString(GameResources.Texte2, TabParole[NumParole], ParolePosition, CouleurParole);
                 if(EnterVisible)
-                g.DrawString(RessourcesLoxi.Texte, "APPUYER SUR ENTER", new Vector2(BullePosition.X, 10), CouleurParole);
+                    g.DrawString(GameResources.Texte, "APPUYER SUR ENTER", new Vector2(BullePosition.X, 10), CouleurParole);
                 AP2.Draw(gametime, g, new Vector2(550, 330), SpriteEffects.FlipHorizontally);
             }
 

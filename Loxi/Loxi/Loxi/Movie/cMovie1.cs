@@ -26,28 +26,28 @@ namespace Loxi
                     "Donald se reposait tranquillement sur\n l'île de Cuba, avec son journal quotidien.",
                     Color.White,
                     Color.BlueViolet,
-                    RessourcesLoxi.Texte),
+                    GameResources.Texte),
 
                 new Diapositive(
                     "NewsPaper",
                     "Dans son journal, on parlait d'une rumeur\n qu'un méchant scientifique voudrait détruire la \n planète et en reconstruire une autre.",
                     Color.Black,
                     Color.Red,
-                    RessourcesLoxi.Texte),
+                    GameResources.Texte),
 
                 new Diapositive(
                     "Bunker",
                     "Donald : Encore un autre fou !! ... \n(il continua de lire) il serait caché dans une base \n militaire non loin de l'île de Cuba \n Donald: C'est sur mon île !! .",
                     Color.DarkMagenta,
                     Color.Red,
-                    RessourcesLoxi.Texte),
+                    GameResources.Texte),
 
                 new Diapositive(
                     "DebutEnquete",
                     "Il décida de mener sa petite enquête lui-même,\n sous le nom de code LOXI pour ne pas dévoiler\n                                               son identité .",
                     Color.Blue,
                     Color.Bisque,
-                    RessourcesLoxi.Texte)
+                    GameResources.Texte)
             };
 
             for (int i = 0; i < Diapos.Length; i++)
@@ -59,7 +59,7 @@ namespace Loxi
             Cinematique.OnCinematicFinished -= ChangeScreen; // just for be sure
             Cinematique.OnCinematicFinished += ChangeScreen;
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(RessourcesLoxi.SongCinematique1);
+            MediaPlayer.Play(GameResources.SongCinematique1);
         }
 
         public override void Load()

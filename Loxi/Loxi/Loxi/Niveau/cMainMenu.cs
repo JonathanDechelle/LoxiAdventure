@@ -34,11 +34,11 @@ namespace Loxi
 
         public override void Load()
         {
-            btnPlay = new Button(RessourcesLoxi.MainMenuButton, new Vector2(600, 20), 3);
-            btnExplication = new Button(RessourcesLoxi.ExplicationMainButton, new Vector2(600, 200), 3);
-            rain = new ParticleGenerator(RessourcesLoxi.Rain, m_GraphicsDeviceManager.GraphicsDevice.Viewport.Width,80);
+            btnPlay = new Button(GameResources.MainMenuButton, new Vector2(600, 20), 3);
+            btnExplication = new Button(GameResources.ExplicationMainButton, new Vector2(600, 200), 3);
+            rain = new ParticleGenerator(GameResources.Rain, m_GraphicsDeviceManager.GraphicsDevice.Viewport.Width, 80);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(RessourcesLoxi.SongImageTitre);
+            MediaPlayer.Play(GameResources.SongImageTitre);
         }
 
 
@@ -80,8 +80,8 @@ namespace Loxi
             switch (CurrentGameState)
             {
                 case GameState.MainMenu:
-                    g.Draw(RessourcesLoxi.BambooForest, new Rectangle(0, 0, 800, 500), Color.White);
-                    g.Draw(RessourcesLoxi.PageTitre, new Rectangle(0, 0, 800, 500), Color.White);
+                    g.Draw(GameResources.BambooForest, new Rectangle(0, 0, 800, 500), Color.White);
+                    g.Draw(GameResources.PageTitre, new Rectangle(0, 0, 800, 500), Color.White);
                     btnPlay.Draw(g);
                     btnExplication.Draw(g);
                     rain.Draw(g);

@@ -40,12 +40,12 @@ namespace Loxi
         {
             Player = new Player(true, true);
             Player.Position = new Vector2(140, 140);
-            EnnemiePatrol = new EnnemyPatrol(RessourcesLoxi.TestPatrouille, new Vector2(400, 300), 150);
-            BarreVie = new HealthBars(RessourcesLoxi.HealtBar, new Vector2(-80, -180));
+            EnnemiePatrol = new EnnemyPatrol(GameResources.TestPatrouille, new Vector2(400, 300), 150);
+            BarreVie = new HealthBars(GameResources.HealtBar, new Vector2(-80, -180));
             Obstacles = new List<ObjCollisionable>();
-            Obstacles.Add(new ObjCollisionable(10, 200, RessourcesLoxi.Test, 132,132, Color.Blue));
-            Obstacles.Add(new ObjCollisionable(600, 400, RessourcesLoxi.Test, 62,62, Color.Blue));
-            Obstacles.Add(new ObjCollisionable(300, 200, RessourcesLoxi.Test, 122,122, Color.Blue));
+            Obstacles.Add(new ObjCollisionable(10, 200, GameResources.Test, 132, 132, Color.Blue));
+            Obstacles.Add(new ObjCollisionable(600, 400, GameResources.Test, 62, 62, Color.Blue));
+            Obstacles.Add(new ObjCollisionable(300, 200, GameResources.Test, 122, 122, Color.Blue));
             Camera = new Camera(graphics.GraphicsDevice.Viewport);
            // Background1 = new cBackground();
             //Background1.Rectangle = new Rectangle(-180, -90, 1000, 1000);
@@ -57,10 +57,10 @@ namespace Loxi
         public override void Load()
         {
             Player.Load(m_Content);
-            pausedTexture = RessourcesLoxi.PausedMenu;
+            pausedTexture = GameResources.PausedMenu;
             pausedrectangle = new Rectangle(0, 0, pausedTexture.Width, pausedTexture.Height);
-            btnPlay = new Button(RessourcesLoxi.MainMenuButton,new Vector2(570,125),3);
-            btnQuit = new Button(RessourcesLoxi.MainMenuButton, new Vector2(570, 300),3);
+            btnPlay = new Button(GameResources.MainMenuButton, new Vector2(570, 125), 3);
+            btnQuit = new Button(GameResources.MainMenuButton, new Vector2(570, 300), 3);
             EcartbtnPlay = btnPlay.m_Position;
             EcartbtnQuit = btnQuit.m_Position;
         }
@@ -90,7 +90,7 @@ namespace Loxi
                 }
 
                 //EnnemiePatrol.Update(Player,Obstacles);
-                Player.Update(Obstacles,RessourcesLoxi.JumpEffect,RessourcesLoxi.ShootEffect);
+                Player.Update(Obstacles, GameResources.JumpEffect, GameResources.ShootEffect);
                 Camera.Update(Player.Position);
                 //BarreVie.Update(false,1);
                 //  LoadEnnemies();
@@ -170,7 +170,7 @@ namespace Loxi
                 spawn = 0;
                 if (ennemies.Count() < 6)
                 {
-                    ennemies.Add(new Ennemi(RessourcesLoxi.Test, new Vector2(1100, randY), RessourcesLoxi.Test));
+                    ennemies.Add(new Ennemi(GameResources.Test, new Vector2(1100, randY), GameResources.Test));
                 }
 
                 for (int i = 0; i < ennemies.Count; i++)

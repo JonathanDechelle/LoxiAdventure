@@ -59,7 +59,8 @@ namespace Loxi
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            RessourcesLoxi.LoadContent(Content);
+            GameResources.LoadContent(Content);
+
             //Create a new Title screen.
             GameScreen.AddScreen(new cMainMenu(Services,this.graphics));
         }
