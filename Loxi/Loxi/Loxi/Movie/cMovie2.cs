@@ -33,7 +33,7 @@ namespace Loxi
 
          public override void Load()
          {
-             MediaPlayer.Play(GameResources.SongCinematique2);
+             //MediaPlayer.Play(GameResources.SongCinematique2);
          }
 
          public override void Update(GameTime gameTime)

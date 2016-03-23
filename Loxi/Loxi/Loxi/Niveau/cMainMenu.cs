@@ -38,7 +38,7 @@ namespace Loxi
             btnExplication = new Button(GameResources.ExplicationMainButton, new Vector2(600, 200), 3);
             rain = new ParticleGenerator(GameResources.Rain, m_GraphicsDeviceManager.GraphicsDevice.Viewport.Width, 80);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(GameResources.SongImageTitre);
+            //MediaPlayer.Play(GameResources.SongImageTitre);
         }
 
 

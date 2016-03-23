@@ -18,7 +18,7 @@ namespace Loxi
     class cNiv1:GameScreen
     {
         Player Player;
-        EnnemyPatrol EnnemiePatrol;
+        EnemyPatrol EnnemiePatrol;
         HealthBars BarreVie;
         Camera Camera;
        // Scrolling Scrolling1, Scrolling2;
@@ -35,12 +35,21 @@ namespace Loxi
         Button btnPlay, btnQuit;
         Vector2 EcartbtnPlay,EcartbtnQuit;
 
+        EnemyPatrolData m_patrolData;
+
         public cNiv1(IServiceProvider serviceProvider,GraphicsDeviceManager graphics)
             : base(serviceProvider,graphics)
         {
             Player = new Player(true, true);
             Player.Position = new Vector2(140, 140);
-            EnnemiePatrol = new EnnemyPatrol(GameResources.TestPatrouille, new Vector2(400, 300), 150);
+
+
+            m_patrolData.m_PatrolAnimation = GameResources.RifleSoldierPatrouilleAnimation;
+            m_patrolData.m_PatrolDistance = 150f;
+            m_patrolData.m_PatrolSpeed = 10f;
+
+            EnnemiePatrol = new EnemyPatrol(GameResources.TestPatrouille, new Vector2(400, 300), m_patrolData);
+
             BarreVie = new HealthBars(GameResources.HealtBar, new Vector2(-80, -180));
             Obstacles = new List<ObjCollisionable>();
             Obstacles.Add(new ObjCollisionable(10, 200, GameResources.Test, 132, 132, Color.Blue));
@@ -152,7 +161,7 @@ namespace Loxi
                 }
 
                 BarreVie.Draw(g);
-                EnnemiePatrol.Draw(g);
+                EnnemiePatrol.Draw(gametime, g);
 
             }
 

@@ -19,8 +19,7 @@ namespace Loxi
         Player Joueur = new Player(true, false);
         HealthBars BarreDeDetection;
         List<ObjCollisionable> Mur = new List<ObjCollisionable>();
-        List<EnnemyPatrol> EnnemiesPatrols = new List<EnnemyPatrol>();
-        Animation RifleSoldierCheck, RifleSoldierPatrouille;
+        List<EnemyPatrol> EnnemiesPatrols = new List<EnemyPatrol>();
         AnimationPlayer Animationplayer;
         Rectangle rDestinationb = new Rectangle(410, 0, 190, 100), rDestinationc = new Rectangle(650, 0, 150, 150),
                   rDestinationd = new Rectangle(250, 450, 200, 50);
@@ -28,7 +27,7 @@ namespace Loxi
         float TimerFin = 0;
         int RetourAFront = 0;
 
-        EnnemyPatrol EnnemiPatrouille1, EnnemiPatrouille2;
+        EnemyPatrol EnnemiPatrouille1, EnnemiPatrouille2;
         
         enum Emplacement
         {
@@ -49,29 +48,24 @@ namespace Loxi
         EmplacementoutBase SideofOutBase = EmplacementoutBase.frontside;
         EmplacementInBase PartofInBase;
         string Parole;
-        
+
+        EnemyPatrolData m_PatrolSoldierPatrolData;
 
          public cNivComplexeScientifique(IServiceProvider serviceProvider, GraphicsDeviceManager graphics)
             : base(serviceProvider, graphics)
         {
-            RifleSoldierCheck = new Animation(GameResources.RifleSoldierCheck, 45, 1.0f, 1f, true);
-            RifleSoldierPatrouille = new Animation(GameResources.RifleSoldierPatrouille, 45, 0.5f, 2, true);
+            m_PatrolSoldierPatrolData = new EnemyPatrolData(400f, 1, GameResources.RifleSoldierPatrouilleAnimation);
+
             /// Ennemi outbase
-            #region OutBase
-             //Ennemi LeftDoor
-            EnnemiPatrouille1 = new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(500, 480), 400);
-             //Ennemi RightDoor
-            EnnemiPatrouille2 = new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(600, 480), 400);
-            #endregion
-           
-
+            EnnemiPatrouille1 = new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(500, 480), m_PatrolSoldierPatrolData);
+            EnnemiPatrouille2 = new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(600, 480), m_PatrolSoldierPatrolData);
         }
-
+          
         public override void Load()
         {
             Joueur.Load(m_Content);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(GameResources.SongNiv1);
+            //MediaPlayer.Play(GameResources.SongNiv1);
         }
 
         public override void Update(GameTime gameTime)
@@ -98,11 +92,11 @@ namespace Loxi
             }
 
             Joueur.Update(Mur, GameResources.JumpEffect, GameResources.ShootEffect);
-            foreach (EnnemyPatrol Ennemie in EnnemiesPatrols)
+            foreach (EnemyPatrol Ennemie in EnnemiesPatrols)
             {
+                Ennemie.Update();
                 //Ennemie.Update(Joueur, Mur);
                 //BarreDeDetection.Update(Ennemie.DiscoverYou,1);
-                Animationplayer.PlayAnimation(RifleSoldierPatrouille);
             }
 
             switch(CurrentEmplacement)
@@ -112,7 +106,7 @@ namespace Loxi
                     switch (SideofOutBase)
                     {
                         case EmplacementoutBase.frontside:
-                            Animationplayer.PlayAnimation(RifleSoldierCheck);
+                            Animationplayer.PlayAnimation(GameResources.RifleSoldierCheckAnimation);
                             if (RetourAFront != 2)
                                 Parole = "       Je dois \n    trouver un \n      moyen de \n      rentrer !!!";
                             else
@@ -133,8 +127,7 @@ namespace Loxi
                             }
                             break;
                         case EmplacementoutBase.leftside:
-                            Animationplayer.PlayAnimation(RifleSoldierPatrouille);
-                            //EnnemiPatrouille1.Update(null,null);
+                            EnnemiPatrouille1.Update();
                             if (KeyboardHelper.KeyPressed(Keys.D))
                             {
                                 SideofOutBase = EmplacementoutBase.frontside;
@@ -142,8 +135,7 @@ namespace Loxi
                             }
                             break;
                         case EmplacementoutBase.rightside:
-                            Animationplayer.PlayAnimation(RifleSoldierPatrouille);
-                            //EnnemiPatrouille2.Update(null,null);
+                            EnnemiPatrouille2.Update();
                             if (KeyboardHelper.KeyPressed(Keys.A))
                             {
                                 SideofOutBase = EmplacementoutBase.frontside;
@@ -171,8 +163,8 @@ namespace Loxi
                                 Mur.Add(new ObjCollisionable(150, 360, GameResources.Test, 450, 10, Color.Blue));
                                 Mur.Add(new ObjCollisionable(150, 150, GameResources.Test, 10, 210, Color.Blue));
                                 Mur.Add(new ObjCollisionable(150, 150, GameResources.Test, 650, 10, Color.Blue));
-                                EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(120, 460), 400));
-                                EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(450, 130), 700));
+                                EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(120, 460), m_PatrolSoldierPatrolData));
+                                EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(450, 130), m_PatrolSoldierPatrolData));
                             }
 
                             break;
@@ -188,9 +180,9 @@ namespace Loxi
                                 Mur.Add(new ObjCollisionable(0, 350, GameResources.Test, 250, 10, Color.Blue));
                                 Mur.Add(new ObjCollisionable(450, 190, GameResources.Test, 350, 10, Color.Blue));
                                 Mur.Add(new ObjCollisionable(450, 350, GameResources.Test, 350, 10, Color.Blue));
-                                EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(800, 150), 400));
-                                EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(300, 300), 350));
-                                EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(400, 500), 500));
+                                EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(800, 150), m_PatrolSoldierPatrolData));
+                                EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(300, 300), m_PatrolSoldierPatrolData));
+                                EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(400, 500), m_PatrolSoldierPatrolData));
 
                             }
                             break;
@@ -221,7 +213,7 @@ namespace Loxi
                         ////A
                         PartofInBase = EmplacementInBase.A;
                         CurrentEmplacement = Emplacement.inBase;
-                        EnnemiesPatrols.Add(new EnnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(850, 500), 300));
+                        EnnemiesPatrols.Add(new EnemyPatrol(GameResources.RifleSoldierPatrouille, new Vector2(850, 500), m_PatrolSoldierPatrolData));
                         Mur.Add(new ObjCollisionable(0, 360, GameResources.Test, 400, 10, Color.Blue));
                         Mur.Add(new ObjCollisionable(400, 0, GameResources.Test, 10, 370, Color.Blue));
                         Mur.Add(new ObjCollisionable(600, 360, GameResources.Test, 200, 10, Color.Blue));
@@ -242,9 +234,9 @@ namespace Loxi
                 muret.Draw(g);
             }
 
-            foreach (EnnemyPatrol Ennemie in EnnemiesPatrols)
+            foreach (EnemyPatrol Ennemie in EnnemiesPatrols)
             {
-                Animationplayer.Draw(gametime, g, Ennemie.Position, Ennemie.Effect);
+                Ennemie.Draw(gametime, g);
             }
 
             switch (CurrentEmplacement)
@@ -280,13 +272,13 @@ namespace Loxi
                             g.Draw(GameResources.BunkerLeftSide, new Rectangle(0, 0, 800, 500), Color.White);
                             g.Draw(GameResources.Test, rFlecheDroite, Color.White);
                             g.Draw(GameResources.Fleche, rFlecheDroite, Color.Blue);
-                             Animationplayer.Draw(gametime, g, EnnemiPatrouille1.Position, EnnemiPatrouille1.Effect);
+                            EnnemiPatrouille1.Draw(gametime, g);
                             break;
                         case EmplacementoutBase.rightside:
                             g.Draw(GameResources.BunkerRightSide, new Rectangle(0, 0, 800, 500), Color.White);
                             g.Draw(GameResources.Test, rFlecheGauche, Color.White);
                             g.Draw(GameResources.Fleche, rFlecheGauche, null, Color.Red, 0f, new Vector2(), SpriteEffects.FlipHorizontally, 0f);
-                            Animationplayer.Draw(gametime, g, EnnemiPatrouille2.Position, EnnemiPatrouille2.Effect);
+                            EnnemiPatrouille2.Draw(gametime, g);
                             break;
                     }
 

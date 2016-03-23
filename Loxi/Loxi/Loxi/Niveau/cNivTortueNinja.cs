@@ -73,7 +73,7 @@ namespace Loxi
             Joueur = new Player(true, true);
             Joueur.Position = new Vector2(200, 20);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(GameResources.SongNiv2);
+            //MediaPlayer.Play(GameResources.SongNiv2);
         }
 
         public override void Load()

@@ -204,6 +204,9 @@ namespace Loxi
             LeoAttackAnimation = new Animation(LeoAttack, 100, 0.3f, 2, true);
             LeoAttenteAnimation = new Animation(AfterFightLeo, 80, 0.5f, 2, true);
             LeoAttack2Animation = new Animation(LeoAttack2, 110, 0.5f, 2, false);
+
+            RifleSoldierCheckAnimation = new Animation(GameResources.RifleSoldierCheck, 45, 1.0f, 1f, true);
+            RifleSoldierPatrouilleAnimation = new Animation(GameResources.RifleSoldierPatrouille, 45, 0.10f, 2, true);
         }
         #endregion
 
@@ -270,6 +273,11 @@ namespace Loxi
         public static Animation LeoAttenteAnimation;
         public static Animation LeoAttack2Animation;
         #endregion
+        #endregion
+
+        #region Soldier
+        public static Animation RifleSoldierCheckAnimation;
+        public static Animation RifleSoldierPatrouilleAnimation;
         #endregion
     }
 }

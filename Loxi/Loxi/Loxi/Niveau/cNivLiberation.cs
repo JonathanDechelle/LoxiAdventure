@@ -43,7 +43,7 @@ namespace Loxi
             DaffyAnimation = new Animation(GameResources.DaffiDuck, 90, 0.3f, 2, true);
             DaffiExit = new Animation(GameResources.DaffiExitLevel, 80, 0.28f, 2, true);
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(GameResources.Rasputin);
+            //MediaPlayer.Play(GameResources.Rasputin);
         }
 
         public override void Update(GameTime gameTime)

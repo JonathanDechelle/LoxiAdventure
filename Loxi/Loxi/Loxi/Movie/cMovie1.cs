@@ -59,7 +59,7 @@ namespace Loxi
             Cinematique.OnCinematicFinished -= ChangeScreen; // just for be sure
             Cinematique.OnCinematicFinished += ChangeScreen;
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(GameResources.SongCinematique1);
+            //MediaPlayer.Play(GameResources.SongCinematique1);
         }
 
         public override void Load()

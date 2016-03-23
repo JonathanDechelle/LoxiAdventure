@@ -51,7 +51,7 @@ namespace Loxi
         }
         public override void Load()
         {
-            MediaPlayer.Play(GameResources.SongCinematique3);
+            //MediaPlayer.Play(GameResources.SongCinematique3);
             MediaPlayer.IsRepeating = true;
         }
 
